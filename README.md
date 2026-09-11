@@ -24,7 +24,26 @@ Giảng viên hướng dẫn: **TS. Nguyễn Kiều Linh**
 
 ---
 
-## 2. Cấu trúc thư mục dự án
+## 2. Kiến trúc Hệ thống (System Architecture)
+
+Hệ thống được thiết kế theo mô hình 4 phân tầng chịu lỗi cao, điều phối giữa hàng đợi phân tán, các worker kiểm chứng Lean 4 và các engine sửa lỗi (chi tiết tại [docs/architecture.md](docs/architecture.md)):
+
+```mermaid
+flowchart LR
+    In["Nhóm 5<br/>Mã lỗi"] --> Q["Hàng đợi phân tán<br/>(Priority Queue)"]
+    Q --> V["Lean 4 Verifier<br/>(Worker Pool)"]
+    V --> P["Error Parser<br/>& Taxonomy"]
+    P --> R{"Router"}
+    R -->|Cú pháp/Import| Rule["Rule Fixer<br/>(0-Token)"]
+    R -->|Kiểu/Logic| LLM["LLM Repair<br/>(Context)"]
+    Rule & LLM --> B{"Bounded Retry<br/>Controller"}
+    B -->|Thử lại| V
+    B -->|Hoàn tất| S["Replayable<br/>Error Store"]
+```
+
+---
+
+## 3. Cấu trúc thư mục dự án
 
 ```text
 .
@@ -54,9 +73,9 @@ Giảng viên hướng dẫn: **TS. Nguyễn Kiều Linh**
 
 ---
 
-## 3. Hướng dẫn cài đặt & Chạy nhanh (Quick Start)
+## 4. Hướng dẫn cài đặt & Chạy nhanh (Quick Start)
 
-### 3.1. Khởi tạo môi trường
+### 4.1. Khởi tạo môi trường
 ```bash
 # 1. Tạo môi trường ảo Python 3.10+
 python3 -m venv .venv
@@ -66,32 +85,30 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 3.2. Chạy kiểm thử tự động
+### 4.2. Chạy kiểm thử tự động
 ```bash
-pytest tests/ -v
+python3 -m unittest discover -s tests -v
 ```
 
-### 3.3. Chạy Baseline thử nghiệm
+### 4.3. Chạy Baseline thử nghiệm
 ```bash
-python3 -m src.baseline --config configs/baseline.yaml
+python3 src/baseline_repair.py --data data_sample/error_dataset_50.json
 ```
-Kết quả thực nghiệm sẽ được ghi tự động vào `results/raw/run_<run_id>.json`.
+Kết quả thực nghiệm sẽ được ghi tự động vào `results/raw/run_blind-retry-baseline-*.json`.
 
 ---
 
-## 4. Quy tắc thực nghiệm & Tái lập (Reproducibility)
+## 5. Quy tắc thực nghiệm & Tái lập (Reproducibility)
 
 Theo quy định học phần, mọi báo cáo kết quả phải tuân thủ:
 1. **Có Baseline so sánh:** Luôn chạy phương pháp cơ sở trước trên cùng tập split dữ liệu và cùng phần cứng.
-2. **Benchmark 3 mức quy mô:** Đo lường trên 3 mức dữ liệu / tải (Tier 1 $
-ightarrow$ Tier 2 $
-ightarrow$ Tier 3).
+2. **Benchmark 3 mức quy mô:** Đo lường trên 3 mức dữ liệu / tải (Tier 1 $\rightarrow$ Tier 2 $\rightarrow$ Tier 3).
 3. **Chỉ số bắt buộc:** Bắt buộc ghi nhận độ trễ phân vị $P50$ và $P95$, không dùng giá trị trung bình đơn lẻ.
 4. **Không commit dữ liệu lớn vào Git:** Chỉ lưu mẫu nhỏ trong `data_sample/`. Dữ liệu lớn được tải qua script.
 
 ---
 
-## 5. Tác tử AI & Tích hợp GitNexus
+## 6. Tác tử AI & Tích hợp GitNexus
 
 Dự án đã được trang bị đầy đủ bộ **AI Harness** để phối hợp với các trợ lý AI (Claude Code, Cursor, Antigravity):
 * **Harness & Conventions:** Quy định chặt chẽ trong `CLAUDE.md` và `CONVENTIONS.md`.
