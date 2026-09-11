@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  verifier_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: int4418_group6_verifier
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    command: python3 src/baseline_repair.py --data data_sample/error_dataset_50.json
