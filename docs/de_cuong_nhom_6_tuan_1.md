@@ -12,7 +12,8 @@
 * *RQ2:* Dưới một ngân sách cố định về chi phí token LLM và thời gian phản hồi, chính sách retry có chặn (Bounded Retry Loop) kết hợp Rule-based Heuristic và LLM nào tối ưu được tỷ lệ biên dịch thành công (Compile Rate) và giảm thiểu độ trễ đuôi (Tail Latency P95)?
 
 **3. Nút thắt Big Data (Big Data Bottleneck):**  
-* **Tải xử lý & Độ trễ:** Khi quy mô bài toán tăng lên hàng nghìn tới hàng chục nghìn ($1.000 ightarrow 10.000$ candidates), hệ thống gặp nút thắt về lập lịch hàng đợi phân tán, tranh chấp tài nguyên giữa nhiều worker kiểm chứng Lean (vốn rất tốn CPU và bộ nhớ), bùng nổ độ trễ đuôi ($P95 / P99$) và chi phí token nếu retry không kiểm soát.
+* **Tải xử lý & Độ trễ:** Khi quy mô bài toán tăng lên hàng nghìn tới hàng chục nghìn ($1.000 
+ightarrow 10.000$ candidates), hệ thống gặp nút thắt về lập lịch hàng đợi phân tán, tranh chấp tài nguyên giữa nhiều worker kiểm chứng Lean (vốn rất tốn CPU và bộ nhớ), bùng nổ độ trễ đuôi ($P95 / P99$) và chi phí token nếu retry không kiểm soát.
 * **Đa dạng lỗi & Trùng lặp:** Sự bùng nổ các biến thể lỗi (lỗi cú pháp, thiếu import, sai kiểu, timeout) đòi hỏi kỹ thuật phân loại theo lô và xử lý song song để tránh lãng phí chi phí suy luận.
 
 **4. Dữ liệu và giấy phép:**  
@@ -47,12 +48,12 @@
 * → `Bounded Retry Controller` (Kiểm tra giới hạn ngân sách & số lần thử) → `Output Store & Replay Log`.
 
 **9. Phân vai thành viên:**  
-* **Đào Văn Tâm (B25CHHT112) - Trưởng nhóm:** Phụ trách chính *Evaluation, Pareto Analysis & Report* (Thành viên 6) / Dự phòng: *Queue System*.
-* **Lâm Thành Trung (B25CHHT117):** Phụ trách chính *Queue & Worker System* (Thành viên 5) / Dự phòng: *Evaluation*.
-* **Nguyễn Xuân Tùng (B25CHHT119):** Phụ trách chính *LLM Repair Engine* (Thành viên 4) / Dự phòng: *Rule Repair*.
-* **Trần Quang Đức Dũng (B25CHHT088):** Phụ trách chính *Rule-based Repair* (Thành viên 3) / Dự phòng: *LLM Repair*.
-* **Khamsing OUTHAIHUENG (B25CHHT125):** Phụ trách chính *Parser & Error Taxonomy* (Thành viên 2) / Dự phòng: *Error Dataset*.
-* **Mekdala Nounou (B25CHHT124):** Phụ trách chính *Error Dataset & Data Contract* (Thành viên 1) / Dự phòng: *Parser & Taxonomy*.
+* **Đào Văn Tâm (B25CHHT112) - Trưởng nhóm:** Phụ trách chính *Evaluation, Pareto Analysis & Report* (Thành viên 6) / Dự phòng: *Queue & Worker System*.
+* **Trần Quang Đức Dũng (B25CHHT088):** Phụ trách chính *Queue & Worker System* (Thành viên 5) / Dự phòng: *Evaluation & Cost Analysis*.
+* **Lâm Thành Trung (B25CHHT117):** Phụ trách chính *Rule-based Repair* (Thành viên 3) / Dự phòng: *LLM Repair Engine*.
+* **Nguyễn Xuân Tùng (B25CHHT119):** Phụ trách chính *LLM Repair Engine* (Thành viên 4) / Dự phòng: *Rule-based Repair*.
+* **Khamsing OUTHAIHUENG (B25CHHT125):** Phụ trách chính *Parser & Error Taxonomy* (Thành viên 2) / Dự phòng: *Error Dataset & Contract*.
+* **Mekdala Nounou (B25CHHT124):** Phụ trách chính *Error Dataset & Data Contract* (Thành viên 1) / Dự phòng: *Parser & Error Taxonomy*.
 
 **10. Rủi ro và phương án dự phòng:**  
 * *Rủi ro 1: Lean 4 biên dịch quá lâu dẫn tới treo worker.* → **Dự phòng:** Đặt timeout cứng (`maxHeartbeats = 200.000`, process timeout 15s) và kill tiến trình quá hạn.

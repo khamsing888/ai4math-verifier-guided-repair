@@ -16,9 +16,9 @@ Giảng viên hướng dẫn: **TS. Nguyễn Kiều Linh**
 | STT | Mã học viên | Họ và tên | Vai trò phụ trách chính | Vai trò dự phòng |
 |:---:|:---:|:---|:---|:---|
 | 1 | **B25CHHT112** | **Đào Văn Tâm** *(Trưởng nhóm)* | Evaluation & Cost Analysis (Lead) | Queue & Worker System |
-| 2 | **B25CHHT117** | **Lâm Thành Trung** | Queue & Worker System Lead | Evaluation & Cost Analysis |
-| 3 | **B25CHHT119** | **Nguyễn Xuân Tùng** | LLM Repair Engine Lead | Rule-based Repair |
-| 4 | **B25CHHT088** | **Trần Quang Đức Dũng** | Rule-based Repair Lead | LLM Repair Engine |
+| 2 | **B25CHHT088** | **Trần Quang Đức Dũng** | Queue & Worker System Lead | Evaluation & Cost Analysis |
+| 3 | **B25CHHT117** | **Lâm Thành Trung** | Rule-based Repair Lead | LLM Repair Engine |
+| 4 | **B25CHHT119** | **Nguyễn Xuân Tùng** | LLM Repair Engine Lead | Rule-based Repair |
 | 5 | **B25CHHT125** | **Khamsing OUTHAIHUENG** | Parser & Taxonomy Lead | Error Dataset & Contract |
 | 6 | **B25CHHT124** | **Mekdala Nounou** | Error Dataset & Contract Lead | Parser & Taxonomy |
 
@@ -83,7 +83,9 @@ Kết quả thực nghiệm sẽ được ghi tự động vào `results/raw/run
 
 Theo quy định học phần, mọi báo cáo kết quả phải tuân thủ:
 1. **Có Baseline so sánh:** Luôn chạy phương pháp cơ sở trước trên cùng tập split dữ liệu và cùng phần cứng.
-2. **Benchmark 3 mức quy mô:** Đo lường trên 3 mức dữ liệu / tải (Tier 1 $ightarrow$ Tier 2 $ightarrow$ Tier 3).
+2. **Benchmark 3 mức quy mô:** Đo lường trên 3 mức dữ liệu / tải (Tier 1 $
+ightarrow$ Tier 2 $
+ightarrow$ Tier 3).
 3. **Chỉ số bắt buộc:** Bắt buộc ghi nhận độ trễ phân vị $P50$ và $P95$, không dùng giá trị trung bình đơn lẻ.
 4. **Không commit dữ liệu lớn vào Git:** Chỉ lưu mẫu nhỏ trong `data_sample/`. Dữ liệu lớn được tải qua script.
 

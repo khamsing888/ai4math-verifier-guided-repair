@@ -7,27 +7,28 @@
 
 ## 1. Bảng số liệu định lượng tổng hợp (Quantitative Summary)
 
-* **Tổng số phiên/hạng mục AI hỗ trợ:** `9`
-* **Ước tính số dòng mã & tài liệu AI đồng hành:** `~1300` dòng
+* **Tổng số phiên/hạng mục AI hỗ trợ:** `10`
+* **Ước tính số dòng mã & tài liệu AI đồng hành:** `~1335` dòng
 * **Cơ chế kiểm chứng bắt buộc:** 100% mã nguồn được xác minh qua unit test tự động và trình kiểm chứng Lean 4; không chấp nhận mã chưa kiểm chứng.
 
 ### Phân bổ theo loại tác vụ:
 | Loại tác vụ | Số lần ghi nhận | Tỷ trọng (%) |
 |:---|:---:|:---:|
-| Workspace Setup | 1 | 11.1% |
-| Governance & Harness | 1 | 11.1% |
-| Academic Proposal | 1 | 11.1% |
-| Taxonomy Design | 1 | 11.1% |
-| Dataset Curation | 1 | 11.1% |
-| Code Generation | 1 | 11.1% |
-| Baseline Implementation | 1 | 11.1% |
-| Testing & QA | 1 | 11.1% |
-| Team Roster & Governance | 1 | 11.1% |
+| Workspace Setup | 1 | 10.0% |
+| Governance & Harness | 1 | 10.0% |
+| Academic Proposal | 1 | 10.0% |
+| Taxonomy Design | 1 | 10.0% |
+| Dataset Curation | 1 | 10.0% |
+| Code Generation | 1 | 10.0% |
+| Baseline Implementation | 1 | 10.0% |
+| Testing & QA | 1 | 10.0% |
+| Team Roster & Governance | 1 | 10.0% |
+| Team Role Adjustment | 1 | 10.0% |
 
 ### Phân bổ theo mô hình / công cụ AI:
 | Mô hình / Công cụ | Số lần ghi nhận | Tỷ trọng (%) |
 |:---|:---:|:---:|
-| Claude Code / Antigravity | 9 | 100.0% |
+| Claude Code / Antigravity | 10 | 100.0% |
 
 ---
 
@@ -44,6 +45,7 @@
 | 2026-09-11 01:59 | Tuần 1 | Claude Code / Antigravity | Baseline Implementation | Cài đặt Blind One-Shot Retry Baseline (src/baseline_repair.py) theo đúng đặc tả mục 7 đề tài Nhóm 6, đo latency P50/P95 và chi phí token. | Chạy thực tế end-to-end trên tập 50 lỗi, sinh file log JSON Phụ lục B | Đào Văn Tâm | ✅ VERIFIED |
 | 2026-09-11 01:59 | Tuần 1 | Claude Code / Antigravity | Testing & QA | Xây dựng bộ kiểm thử tự động (tests/test_error_parser.py, tests/test_baseline.py) bao phủ các hàm phân loại và baseline. | Thực thi unittest discover, 5/5 tests passed in 0.063s | Đào Văn Tâm | ✅ VERIFIED |
 | 2026-09-11 02:11 | Tuần 1 | Claude Code / Antigravity | Team Roster & Governance | Cập nhật danh sách chính thức 6 thành viên, mã học viên và ma trận phân vai chính/dự phòng chuẩn mục 5 BTL vào contributions.md, đề cương và README | Đối chiếu mã học viên và 6 vai trò chuẩn trong hướng dẫn BTL | Đào Văn Tâm | ✅ VERIFIED |
+| 2026-09-11 02:14 | Tuần 1 | Claude Code / Antigravity | Team Role Adjustment | Điều chỉnh vai trò theo yêu cầu: Trần Quang Đức Dũng phụ trách Queue & Worker System Lead, Lâm Thành Trung phụ trách Rule-based Repair Lead | Kiểm tra tính nhất quán trong contributions.md, de_cuong_nhom_6_tuan_1.md và README.md | Đào Văn Tâm | ✅ VERIFIED |
 
 ---
 
