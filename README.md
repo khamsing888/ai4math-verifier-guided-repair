@@ -83,7 +83,7 @@ Dành cho các thành viên khi mới tham gia dự án hoặc kéo code về m�
 ### 4.1. Clone dự án & Khởi tạo môi trường
 ```bash
 # 1. Clone repository về máy
-git clone https://github.com/<tai-khoan>/ai4math-verifier-guided-repair.git
+git clone https://github.com/tamdv/ai4math-verifier-guided-repair.git
 cd ai4math-verifier-guided-repair
 
 # 2. Tạo môi trường ảo Python 3.10+
