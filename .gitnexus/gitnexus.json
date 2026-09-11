@@ -4,7 +4,7 @@
   "projectName": "PTIT-INT4418-BigData-AI4Math",
   "createdAt": "2026-09-11T01:42:13.133704Z",
   "indexedAt": null,
-  "lastCommit": null,
+  "lastCommit": "1b19f140cd2a552ef4973c06f32721323f8aee3f",
   "settings": {
     "languages": [
       "python",
@@ -40,7 +40,7 @@
     }
   },
   "stats": {
-    "totalFiles": 0,
+    "totalFiles": 34,
     "totalSymbols": 0,
     "indexed": false
   }
