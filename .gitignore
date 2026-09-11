@@ -1,0 +1,92 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Pytest / Coverage
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.pytest_cache/
+
+# Environments & Virtual Machines
+.env
+.env.local
+.env.*.local
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Big Data / Spark / Hadoop
+metastore_db/
+derby.log
+spark-warehouse/
+.sparkStaging/
+*.parquet.crc
+*.checkpoint/
+*.crc
+
+# Heavy Datasets (Keep data_sample/ and manifests only)
+data/
+data_raw/
+*.tar.gz
+*.zip
+*.7z
+*.h5
+*.arrow
+*.feather
+
+# Large Model Checkpoints & Embeddings (> 100MB)
+models/
+checkpoints/
+*.bin
+*.pt
+*.pth
+*.onnx
+*.safetensors
+results/raw/*.bin
+results/raw/*.faiss
+
+# Logs & Temporary Files
+logs/
+*.log
+*.tmp
+scratch/

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://gitnexus.dev/schema/v1/gitnexus.json",
+  "version": "1.0.0",
+  "projectName": "PTIT-INT4418-BigData-AI4Math",
+  "createdAt": "2026-09-11T01:42:13.133704Z",
+  "indexedAt": null,
+  "lastCommit": null,
+  "settings": {
+    "languages": [
+      "python",
+      "markdown",
+      "yaml",
+      "json",
+      "lean"
+    ],
+    "include": [
+      "src/**",
+      "tests/**",
+      "scripts/**",
+      "configs/**",
+      "*.md"
+    ],
+    "exclude": [
+      "data/**",
+      "docs/references/**",
+      "results/raw/**",
+      "venv/**",
+      ".venv/**",
+      "__pycache__/**"
+    ],
+    "maxFileSizeKB": 1024,
+    "mcp": {
+      "enabled": true,
+      "tools": [
+        "gitnexus_query",
+        "gitnexus_context",
+        "gitnexus_impact",
+        "gitnexus_cypher"
+      ]
+    }
+  },
+  "stats": {
+    "totalFiles": 0,
+    "totalSymbols": 0,
+    "indexed": false
+  }
+}

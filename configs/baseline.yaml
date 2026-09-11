@@ -1,0 +1,14 @@
+project: "INT4418-BigData-AI4Math"
+experiment_name: "baseline_evaluation"
+data_sample_path: "data_sample/sample_theorems.json"
+seed: 42
+timeout_seconds: 60
+
+parameters:
+  top_k: 10
+  method: "simple_term_match"
+  normalize_symbols: true
+
+metrics:
+  calculate_p95: true
+  save_raw: true
