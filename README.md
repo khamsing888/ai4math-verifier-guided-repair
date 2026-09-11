@@ -76,19 +76,34 @@ flowchart LR
 
 ---
 
-## 4. Hướng dẫn cài đặt & Chạy nhanh (Quick Start)
+## 4. Hướng dẫn cài đặt & Khởi động nhanh (Quick Start)
 
-### 4.1. Khởi tạo môi trường
+Dành cho các thành viên khi mới tham gia dự án hoặc kéo code về máy:
+
+### 4.1. Clone dự án & Khởi tạo môi trường
 ```bash
-# 1. Tạo môi trường ảo Python 3.10+
+# 1. Clone repository về máy
+git clone https://github.com/<tai-khoan>/ai4math-verifier-guided-repair.git
+cd ai4math-verifier-guided-repair
+
+# 2. Tạo môi trường ảo Python 3.10+
 python3 -m venv .venv
 source .venv/bin/activate
 
-# 2. Cài đặt các gói phụ thuộc
+# 3. Cài đặt các gói Python phụ thuộc
 pip install -r requirements.txt
+
+# 4. Cài đặt Lean 4 toolchain (nếu chạy trực tiếp trên máy)
+bash scripts/install_lean4.sh
 ```
 
-### 4.2. Chạy kiểm thử tự động
+> **Hoặc sử dụng Docker Compose (Khuyên dùng nếu muốn môi trường sẵn sàng 100%):**
+> ```bash
+> docker compose up -d verifier
+> ```
+
+### 4.2. Kiểm thử tự động (Unit Tests)
+Kiểm tra toàn bộ 9+ test case của Parser, Error Store, Baseline:
 ```bash
 python3 -m unittest discover -s tests -v
 ```
@@ -101,7 +116,34 @@ Kết quả thực nghiệm sẽ được ghi tự động vào `results/raw/run
 
 ---
 
-## 5. Quy tắc thực nghiệm & Tái lập (Reproducibility)
+## 5. Quy trình làm việc nhóm & Git Flow (Team Workflow)
+
+Để đảm bảo minh chứng đóng góp cá nhân khi bảo vệ học phần trước Hội đồng:
+
+### 5.1. Phân nhánh tính năng (Feature Branches)
+Tuyệt đối không commit trực tiếp lên nhánh `main`. Mỗi thành viên tạo nhánh riêng tương ứng với phần việc phụ trách:
+* **Lâm Thành Trung (TV3):** `git checkout -b feature/rule-repair`
+* **Nguyễn Xuân Tùng (TV4):** `git checkout -b feature/llm-engine`
+* **Trần Quang Đức Dũng (TV5):** `git checkout -b feature/worker-queue`
+* **Khamsing OUTHAIHUENG (TV2):** `git checkout -b feature/error-router`
+* **Mekdala Nounou (TV1):** `git checkout -b feature/dataset-scale`
+* **Đào Văn Tâm (TV6):** `git checkout -b feature/semantic-audit` hoặc nhánh tích hợp.
+
+### 5.2. Chuẩn Commit & Ghi nhận AI (Bắt buộc)
+1. **Quy chuẩn Commit:** Tuân thủ [Conventional Commits](CONVENTIONS.md):
+   - `feat(...)`: Thêm tính năng mới (ví dụ: `feat(rule): add bracket balancer heuristic`)
+   - `fix(...)`: Sửa lỗi (ví dụ: `fix(parser): handle utf-8 panic in lean diagnostics`)
+   - `test(...)`: Thêm unit test
+   - `docs(...)`: Cập nhật tài liệu
+2. **Ghi nhật ký sử dụng AI:** Nếu có dùng AI (ChatGPT, Claude, Cursor...), bắt buộc chạy lệnh log trước khi commit:
+   ```bash
+   python3 scripts/log_ai_use.py --stage "Week X" --type "Code" --desc "Mô tả công việc" --verify "Kiểm thử bằng test case" --auditor "Tên thành viên" --lines 50
+   ```
+3. **Tạo Pull Request (PR):** Đẩy nhánh lên remote (`git push -u origin feature/...`) và tạo PR trên GitHub để Trưởng nhóm (bạn Tâm) review và merge vào `main`.
+
+---
+
+## 6. Quy tắc thực nghiệm & Tái lập (Reproducibility)
 
 Theo quy định học phần, mọi báo cáo kết quả phải tuân thủ:
 1. **Có Baseline so sánh:** Luôn chạy phương pháp cơ sở trước trên cùng tập split dữ liệu và cùng phần cứng.
@@ -111,7 +153,7 @@ Theo quy định học phần, mọi báo cáo kết quả phải tuân thủ:
 
 ---
 
-## 6. Tác tử AI & Tích hợp GitNexus
+## 7. Tác tử AI & Tích hợp GitNexus
 
 Dự án đã được trang bị đầy đủ bộ **AI Harness** để phối hợp với các trợ lý AI (Claude Code, Cursor, Antigravity):
 * **Harness & Conventions:** Quy định chặt chẽ trong `CLAUDE.md` và `CONVENTIONS.md`.

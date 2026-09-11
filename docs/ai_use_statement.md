@@ -7,34 +7,34 @@
 
 ## 1. Bảng số liệu định lượng tổng hợp (Quantitative Summary)
 
-* **Tổng số phiên/hạng mục AI hỗ trợ:** `16`
-* **Ước tính số dòng mã & tài liệu AI đồng hành:** `~2080` dòng
+* **Tổng số phiên/hạng mục AI hỗ trợ:** `17`
+* **Ước tính số dòng mã & tài liệu AI đồng hành:** `~2125` dòng
 * **Cơ chế kiểm chứng bắt buộc:** 100% mã nguồn được xác minh qua unit test tự động và trình kiểm chứng Lean 4; không chấp nhận mã chưa kiểm chứng.
 
 ### Phân bổ theo loại tác vụ:
 | Loại tác vụ | Số lần ghi nhận | Tỷ trọng (%) |
 |:---|:---:|:---:|
-| Workspace Setup | 1 | 6.2% |
-| Governance & Harness | 1 | 6.2% |
-| Academic Proposal | 1 | 6.2% |
-| Taxonomy Design | 1 | 6.2% |
-| Dataset Curation | 1 | 6.2% |
-| Code Generation | 1 | 6.2% |
-| Baseline Implementation | 1 | 6.2% |
-| Testing & QA | 1 | 6.2% |
-| Team Roster & Governance | 1 | 6.2% |
-| Team Role Adjustment | 1 | 6.2% |
-| Environment & Tooling | 1 | 6.2% |
-| Lean 4 Interactive Verification | 1 | 6.2% |
-| Data Contract & Replayable Store | 1 | 6.2% |
-| System Architecture Documentation | 1 | 6.2% |
-| Architecture Refinement | 1 | 6.2% |
-| Docs | 1 | 6.2% |
+| Docs | 2 | 11.8% |
+| Workspace Setup | 1 | 5.9% |
+| Governance & Harness | 1 | 5.9% |
+| Academic Proposal | 1 | 5.9% |
+| Taxonomy Design | 1 | 5.9% |
+| Dataset Curation | 1 | 5.9% |
+| Code Generation | 1 | 5.9% |
+| Baseline Implementation | 1 | 5.9% |
+| Testing & QA | 1 | 5.9% |
+| Team Roster & Governance | 1 | 5.9% |
+| Team Role Adjustment | 1 | 5.9% |
+| Environment & Tooling | 1 | 5.9% |
+| Lean 4 Interactive Verification | 1 | 5.9% |
+| Data Contract & Replayable Store | 1 | 5.9% |
+| System Architecture Documentation | 1 | 5.9% |
+| Architecture Refinement | 1 | 5.9% |
 
 ### Phân bổ theo mô hình / công cụ AI:
 | Mô hình / Công cụ | Số lần ghi nhận | Tỷ trọng (%) |
 |:---|:---:|:---:|
-| Claude Code / Antigravity | 16 | 100.0% |
+| Claude Code / Antigravity | 17 | 100.0% |
 
 ---
 
@@ -58,6 +58,7 @@
 | 2026-09-11 07:14 | Tuần 1-2 | Claude Code / Antigravity | System Architecture Documentation | Xây dựng tài liệu kiến trúc hệ thống toàn diện (docs/architecture.md) gồm sơ đồ vĩ mô 8 nhóm, sơ đồ vi mô 4 phân tầng Nhóm 6, Sequence Diagram thực thi và nhúng vào README.md | Kiểm tra cú pháp Mermaid flowchart và sequence diagram | Đào Văn Tâm | ✅ VERIFIED |
 | 2026-09-11 07:19 | Tuần 1-2 | Claude Code / Antigravity | Architecture Refinement | Chuẩn hóa sơ đồ kiến trúc hệ thống (bản vẽ ASCII và Mermaid) tích hợp chính xác feedback loop của Bounded Retry Controller và Semantic Safety Check vào architecture.md, README.md và đề cương | Kiểm tra tính nhất quán sơ đồ giữa README, architecture.md và đề cương | Đào Văn Tâm | ✅ VERIFIED |
 | 2026-09-11 09:05 | Week 2 | Claude Code / Antigravity | Docs | Structured detailed member task matrix by individual name and deliverables | Human audit against INT4418 guidelines | Đào Văn Tâm | ✅ VERIFIED |
+| 2026-09-11 09:19 | Week 2 | Claude Code / Antigravity | Docs | Integrated onboarding quickstart and Git Flow team workflow into README.md | Markdown inspection and git status | Đào Văn Tâm | ✅ VERIFIED |
 
 ---
 
