@@ -7,13 +7,20 @@ Giảng viên hướng dẫn: **TS. Nguyễn Kiều Linh**
 
 ---
 
-## 1. Tổng quan & Mục tiêu
+## 1. Tổng quan & Thành viên nhóm
 
-Dự án này là sản phẩm bài tập lớn môn Dữ liệu lớn, tập trung giải quyết các nút thắt kỹ thuật về khối lượng, độ trễ và khả năng mở rộng trong bài toán **AI for Mathematics (AI4Math)**:
-* Xây dựng pipeline dữ liệu chuẩn hóa từ các kho bài toán và mã chứng minh lớn (`NuminaMath`, `ProofNet`, `mathlib4`).
-* So sánh và đánh giá thực nghiệm đa chiều giữa phương pháp cơ sở (Baseline) và phương pháp nâng cao.
-* Tiến hành đo lường khả năng mở rộng (Scalability) qua 3 mức tải, báo cáo phân phối độ trễ $P50 / P95$, thông lượng (QPS) và chi phí tài nguyên (RAM/GPU).
-* Đảm bảo tính khoa học và khả năng tái lập thực nghiệm 100%.
+* **Đề tài:** **NHÓM 6 — Verifier-Guided Repair** (Sửa bản Lean dựa trên phản hồi kiểm chứng).
+* **Mục tiêu:** Giải quyết các nút thắt kỹ thuật về lập lịch hàng đợi phân tán, điều phối đa worker kiểm chứng Lean 4, kiểm soát độ trễ đuôi ($P95$) và bùng nổ chi phí token khi sửa lỗi tự động cho hàng nghìn mã toán hình thức.
+
+### Danh sách thành viên Nhóm 6:
+| STT | Mã học viên | Họ và tên | Vai trò phụ trách chính | Vai trò dự phòng |
+|:---:|:---:|:---|:---|:---|
+| 1 | **B25CHHT112** | **Đào Văn Tâm** *(Trưởng nhóm)* | Evaluation & Cost Analysis (Lead) | Queue & Worker System |
+| 2 | **B25CHHT117** | **Lâm Thành Trung** | Queue & Worker System Lead | Evaluation & Cost Analysis |
+| 3 | **B25CHHT119** | **Nguyễn Xuân Tùng** | LLM Repair Engine Lead | Rule-based Repair |
+| 4 | **B25CHHT088** | **Trần Quang Đức Dũng** | Rule-based Repair Lead | LLM Repair Engine |
+| 5 | **B25CHHT125** | **Khamsing OUTHAIHUENG** | Parser & Taxonomy Lead | Error Dataset & Contract |
+| 6 | **B25CHHT124** | **Mekdala Nounou** | Error Dataset & Contract Lead | Parser & Taxonomy |
 
 ---
 

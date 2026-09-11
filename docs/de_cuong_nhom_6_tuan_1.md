@@ -41,20 +41,20 @@
   * *Token Cost per Success:* Lượng token tiêu thụ trung bình cho mỗi bài sửa thành công.
 
 **8. Kiến trúc bản nháp (Draft Architecture):**  
-* `Input Queue` (Nhận candidate từ Nhóm 5) $ightarrow$ `Lean 4 Verifier` $ightarrow$ `Structured Error Parser` (JSON diagnostics) $ightarrow$ `Error Taxonomy & Router` $ightarrow$
+* `Input Queue` (Nhận candidate từ Nhóm 5) → `Lean 4 Verifier` → `Structured Error Parser` (JSON diagnostics) → `Error Taxonomy & Router` →
   * Nhánh 1 (Lỗi đơn giản: import, typo, ngoặc): `Rule-based Fixer` (0-token cost).
   * Nhánh 2 (Lỗi logic, sai kiểu): `LLM Repair Engine` (Error context injected).
-* $ightarrow$ `Bounded Retry Controller` (Kiểm tra giới hạn ngân sách & số lần thử) $ightarrow$ `Output Store & Replay Log`.
+* → `Bounded Retry Controller` (Kiểm tra giới hạn ngân sách & số lần thử) → `Output Store & Replay Log`.
 
 **9. Phân vai thành viên:**  
-* **Thành viên 1:** Error Dataset & Hold-out curation (Thu thập, gán nhãn, quản lý tập kiểm thử độc lập).
-* **Thành viên 2:** Parser & Error Taxonomy (Bóc tách log JSON từ compiler, chuẩn hóa phân loại lỗi).
-* **Thành viên 3:** Rule-based Repair (Cài đặt các bộ luật sửa nhanh cú pháp và namespace).
-* **Thành viên 4:** LLM Prompting & Repair Engine (Xây dựng prompt tiêm ngữ cảnh lỗi, gọi mô hình AI).
-* **Thành viên 5:** Queue & Distributed Worker System (Hàng đợi, đa tiến trình worker Lean, quản lý timeout & retry).
-* **Thành viên 6:** Evaluation, Pareto Analysis & Report (Đo đạc chỉ số P95, chi phí token, viết báo cáo).
+* **Đào Văn Tâm (B25CHHT112) - Trưởng nhóm:** Phụ trách chính *Evaluation, Pareto Analysis & Report* (Thành viên 6) / Dự phòng: *Queue System*.
+* **Lâm Thành Trung (B25CHHT117):** Phụ trách chính *Queue & Worker System* (Thành viên 5) / Dự phòng: *Evaluation*.
+* **Nguyễn Xuân Tùng (B25CHHT119):** Phụ trách chính *LLM Repair Engine* (Thành viên 4) / Dự phòng: *Rule Repair*.
+* **Trần Quang Đức Dũng (B25CHHT088):** Phụ trách chính *Rule-based Repair* (Thành viên 3) / Dự phòng: *LLM Repair*.
+* **Khamsing OUTHAIHUENG (B25CHHT125):** Phụ trách chính *Parser & Error Taxonomy* (Thành viên 2) / Dự phòng: *Error Dataset*.
+* **Mekdala Nounou (B25CHHT124):** Phụ trách chính *Error Dataset & Data Contract* (Thành viên 1) / Dự phòng: *Parser & Taxonomy*.
 
 **10. Rủi ro và phương án dự phòng:**  
-* *Rủi ro 1: Lean 4 biên dịch quá lâu dẫn tới treo worker.* $ightarrow$ **Dự phòng:** Đặt timeout cứng (`maxHeartbeats = 200.000`, process timeout 15s) và kill tiến trình quá hạn.
-* *Rủi ro 2: Chi phí gọi API LLM tăng quá cao khi mở rộng 10.000 mẫu.* $ightarrow$ **Dự phòng:** Dùng Rule-based xử lý trước các lỗi phổ biến (chiếm ~40%); sử dụng mô hình mã nguồn mở cục bộ (Qwen2.5-Coder / DeepSeek-Coder qua vLLM/Ollama).
-* *Rủi ro 3: Mã sửa biên dịch qua nhưng làm sai ngữ nghĩa bài toán.* $ightarrow$ **Dự phòng:** Thiết kế bộ lọc Semantic Audit kiểm tra AST chữ ký định lý không bị biến đổi so với đề gốc.
+* *Rủi ro 1: Lean 4 biên dịch quá lâu dẫn tới treo worker.* → **Dự phòng:** Đặt timeout cứng (`maxHeartbeats = 200.000`, process timeout 15s) và kill tiến trình quá hạn.
+* *Rủi ro 2: Chi phí gọi API LLM tăng quá cao khi mở rộng 10.000 mẫu.* → **Dự phòng:** Dùng Rule-based xử lý trước các lỗi phổ biến (chiếm ~40%); sử dụng mô hình mã nguồn mở cục bộ (Qwen2.5-Coder / DeepSeek-Coder qua vLLM/Ollama).
+* *Rủi ro 3: Mã sửa biên dịch qua nhưng làm sai ngữ nghĩa bài toán.* → **Dự phòng:** Thiết kế bộ lọc Semantic Audit kiểm tra AST chữ ký định lý không bị biến đổi so với đề gốc.

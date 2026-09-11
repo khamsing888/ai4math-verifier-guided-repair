@@ -7,26 +7,27 @@
 
 ## 1. Bảng số liệu định lượng tổng hợp (Quantitative Summary)
 
-* **Tổng số phiên/hạng mục AI hỗ trợ:** `8`
-* **Ước tính số dòng mã & tài liệu AI đồng hành:** `~1210` dòng
+* **Tổng số phiên/hạng mục AI hỗ trợ:** `9`
+* **Ước tính số dòng mã & tài liệu AI đồng hành:** `~1300` dòng
 * **Cơ chế kiểm chứng bắt buộc:** 100% mã nguồn được xác minh qua unit test tự động và trình kiểm chứng Lean 4; không chấp nhận mã chưa kiểm chứng.
 
 ### Phân bổ theo loại tác vụ:
 | Loại tác vụ | Số lần ghi nhận | Tỷ trọng (%) |
 |:---|:---:|:---:|
-| Workspace Setup | 1 | 12.5% |
-| Governance & Harness | 1 | 12.5% |
-| Academic Proposal | 1 | 12.5% |
-| Taxonomy Design | 1 | 12.5% |
-| Dataset Curation | 1 | 12.5% |
-| Code Generation | 1 | 12.5% |
-| Baseline Implementation | 1 | 12.5% |
-| Testing & QA | 1 | 12.5% |
+| Workspace Setup | 1 | 11.1% |
+| Governance & Harness | 1 | 11.1% |
+| Academic Proposal | 1 | 11.1% |
+| Taxonomy Design | 1 | 11.1% |
+| Dataset Curation | 1 | 11.1% |
+| Code Generation | 1 | 11.1% |
+| Baseline Implementation | 1 | 11.1% |
+| Testing & QA | 1 | 11.1% |
+| Team Roster & Governance | 1 | 11.1% |
 
 ### Phân bổ theo mô hình / công cụ AI:
 | Mô hình / Công cụ | Số lần ghi nhận | Tỷ trọng (%) |
 |:---|:---:|:---:|
-| Claude Code / Antigravity | 8 | 100.0% |
+| Claude Code / Antigravity | 9 | 100.0% |
 
 ---
 
@@ -42,6 +43,7 @@
 | 2026-09-11 01:59 | Tuần 1 | Claude Code / Antigravity | Code Generation | Cài đặt bộ bóc tách lỗi Lean 4 (src/error_parser.py) phân tích log và định tuyến chiến lược sửa (Rule / LLM / System / Audit). | Chạy bộ kiểm thử tự động unittest (100% pass) | Đào Văn Tâm | ✅ VERIFIED |
 | 2026-09-11 01:59 | Tuần 1 | Claude Code / Antigravity | Baseline Implementation | Cài đặt Blind One-Shot Retry Baseline (src/baseline_repair.py) theo đúng đặc tả mục 7 đề tài Nhóm 6, đo latency P50/P95 và chi phí token. | Chạy thực tế end-to-end trên tập 50 lỗi, sinh file log JSON Phụ lục B | Đào Văn Tâm | ✅ VERIFIED |
 | 2026-09-11 01:59 | Tuần 1 | Claude Code / Antigravity | Testing & QA | Xây dựng bộ kiểm thử tự động (tests/test_error_parser.py, tests/test_baseline.py) bao phủ các hàm phân loại và baseline. | Thực thi unittest discover, 5/5 tests passed in 0.063s | Đào Văn Tâm | ✅ VERIFIED |
+| 2026-09-11 02:11 | Tuần 1 | Claude Code / Antigravity | Team Roster & Governance | Cập nhật danh sách chính thức 6 thành viên, mã học viên và ma trận phân vai chính/dự phòng chuẩn mục 5 BTL vào contributions.md, đề cương và README | Đối chiếu mã học viên và 6 vai trò chuẩn trong hướng dẫn BTL | Đào Văn Tâm | ✅ VERIFIED |
 
 ---
 
