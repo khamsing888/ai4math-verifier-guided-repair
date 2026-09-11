@@ -38,7 +38,72 @@ flowchart TD
 
 ## 2. Sơ đồ Vi mô: Chi tiết Kiến trúc Nội bộ Nhóm 6
 
-Kiến trúc nội bộ Nhóm 6 được chia thành 4 phân tầng chức năng rõ rệt, tương ứng với phân công của 6 thành viên:
+### 2.1. Sơ đồ khối kiến trúc chuẩn hóa (ASCII Architecture Diagram)
+
+```text
+               +-------------------------------------------------+
+               |   Đầu vào: Candidate Lean + Compiler Logs       |
+               |               (Nhận từ Nhóm 5)                  |
+               +-----------------------+-------------------------+
+                                       |
+                                       v
++--------------------------------------------------------------------------------+
+|                                  VÒNG LẶP SỬA LỖI                              |
+|                                                                                |
+|                    +-----------------------------------+                       |
+|  +---------------->|    Input Queue & Task Dispatcher  |<----------------+     |
+|  |                 |      (Sử dụng Redis / RabbitMQ)   |                 |     |
+|  |                 +-----------------+-----------------+                 |     |
+|  |                                   |                                   |     |
+|  |                                   v                                   |     |
+|  |               +---------------------------------------+               |     |
+|  |               |     Structured Error Parser &         |               |     |
+|  |               |     Error Taxonomy Classification     |               |     |
+|  |               +-------------------+-------------------+               |     |
+|  |                                   |                                   |     |
+|  |                                   v                                   |     |
+|  |               +---------------------------------------+               |     |
+|  |               |            Error Router               |               |     |
+|  |               +---------+-------------------+---------+               |     |
+|  |                         |                   |                         |     |
+|  |        (Lỗi đơn giản)   |                   | (Lỗi phức tạp)          |     |
+|  |                         v                   v                         |     |
+|  |             +-------------------+   +-------------------+             |     |
+|  |             | Rule-based Repair |   |    LLM Repair     |             |     |
+|  |             | (Tập luật tốn 0   |   | (LLM + Context    |             |     |
+|  |             |  token API)       |   |  lỗi bóc tách)    |             |     |
+|  |             +---------+---------+   +---------+---------+             |     |
+|  |                       |                       |                       |     |
+|  |                       +-----------+-----------+                       |     |
+|  |                                   |                                   |     |
+|  |                                   v                                   |     |
+|  |               +---------------------------------------+               |     |
+|  |               |     Lean Verifier Worker Pool         |               |     |
+|  |               |   (Tập hợp Worker chạy Lean 4)        |               |     |
+|  |               +---------+-------------------+---------+               |     |
+|  |                         |                   |                         |     |
+|  |                 [VẪN BỊ LỖI]         [Biên dịch THÀNH CÔNG]           |     |
+|  |                         |                   |                         |     |
+|  |                         v                   v                         |     |
+|  |             +-----------------------+  +-----------------------+      |     |
+|  |             | Bounded Retry Control |  | Semantic Safety Check |      |     |
+|  |             | (Kiểm tra Budget)     |  | (Chống cheat / đổi đề)|      |     |
+|  |             +---+---------------+---+  +---+---------------+---+      |     |
+|  |                 |               |          |               |          |     |
+|  | (Còn Budget)    |  (Hết Budget) |          | (Pass)        | (Cheat)  |     |
+|  +-----------------+       |       |          |               +----------+     |
++----------------------------|------------------|--------------------------------+
+                             |                  |
+                             v                  v
+                 +---------------------------------------+
+                 |          Result & Log Store           |
+                 | (Lưu kết quả REPAIRED hoặc FAILED)    |
+                 +---------------------------------------+
+```
+
+---
+
+### 2.2. Sơ đồ khối phân tầng chức năng (Mermaid Diagram)
 
 ```mermaid
 flowchart TB
@@ -49,38 +114,35 @@ flowchart TB
         Deduplicator --> JobQueue["Distributed Priority Job Queue<br/>[Trần Quang Đức Dũng]<br/>(FIFO vs. Priority Scheduling)"]
     end
 
-    subgraph Layer2 ["Tầng 2: Kiểm chứng & Bóc tách lỗi (Verification & Parsing Layer)"]
+    subgraph Layer2 ["Tầng 2: Bóc tách lỗi & Định tuyến (Parsing & Routing Layer)"]
         direction TB
-        JobQueue --> WorkerPool["Lean 4 Verifier Worker Pool<br/>[Trần Quang Đức Dũng]<br/>(Multi-process Lean Compiler: lean --json)"]
-        WorkerPool -- "Compiler Diagnostics" --> ErrorParser["Structured Error Parser<br/>[Khamsing OUTHAIHUENG]<br/>(Line, Column, Severity, Message)"]
+        JobQueue --> ErrorParser["Structured Error Parser<br/>[Khamsing OUTHAIHUENG]<br/>(Line, Column, Severity, Message)"]
         ErrorParser --> Taxonomy["Error Taxonomy Classifier<br/>[Khamsing OUTHAIHUENG]<br/>(SYN_01, IMP_02, ID_03, TYP_04, TMO_05, SEM_06)"]
+        Taxonomy --> Router{"Intelligent Error Router<br/>[Khamsing & Tâm]"}
     end
 
-    subgraph Layer3 ["Tầng 3: Định tuyến & Sửa lỗi (Routing & Repair Layer)"]
+    subgraph Layer3 ["Tầng 3: Các Engine Sửa lỗi (Repair Engines Layer)"]
         direction TB
-        Taxonomy --> Router{"Intelligent Repair Router<br/>[Khamsing & Tâm]"}
-        
-        Router -- "Lỗi Cú pháp / Import / Ngoặc<br/>(SYN_01, IMP_02, ID_03 đơn giản)" --> RuleFixer["Rule-based Repair Engine<br/>[Lâm Thành Trung]<br/>(Zero-Token Cost Heuristics: < 5ms)"]
+        Router -- "Lỗi Cú pháp / Import / Ngoặc<br/>(SYN_01, IMP_02, ID_03 đơn giản)" --> RuleFixer["Rule-based Repair Engine<br/>[Lâm Thành Trung]<br/>(Zero-Token Cost: < 5ms)"]
         
         Router -- "Lỗi Kiểu / Logic / Tactic<br/>(TYP_04, ID_03 phức tạp)" --> LLMFixer["LLM Context-Injected Engine<br/>[Nguyễn Xuân Tùng]<br/>(Prompt Injection with Error Diagnostics)"]
-        
-        Router -- "Quá Heartbeats / Loop<br/>(TMO_05)" --> SysControl["System Resource Controller<br/>(Tăng giới hạn hoặc Reject)"]
     end
 
-    subgraph Layer4 ["Tầng 4: Điều phối vòng lặp & Lưu trữ (Control & Persistence Layer)"]
+    subgraph Layer4 ["Tầng 4: Kiểm chứng & Điều phối Bounded Loop (Verification & Control Layer)"]
         direction TB
-        RuleFixer & LLMFixer --> BoundedLoop{"Bounded Retry Controller<br/>[Trần Quang Đức Dũng]<br/>(Attempts <= Budget, Wall-clock Timeout)"}
+        RuleFixer & LLMFixer --> WorkerPool["Lean 4 Verifier Worker Pool<br/>[Trần Quang Đức Dũng]<br/>(Multi-process Lean Compiler: lean --json)"]
         
-        BoundedLoop -- "Gửi lại kiểm chứng" --> WorkerPool
+        WorkerPool -- "Vẫn còn lỗi biên dịch" --> BoundedLoop{"Bounded Retry Controller<br/>[Trần Quang Đức Dũng]<br/>(Attempts <= Budget & Timeout)"}
         
-        WorkerPool -- "Biên dịch thành công" --> SemanticAudit{"Semantic Safety Auditor<br/>[Đào Văn Tâm]<br/>(Chống cheat, bảo tồn chữ ký)"}
+        BoundedLoop -- "Còn Budget: Thử vòng tiếp" --> JobQueue
+        BoundedLoop -- "Hết Budget: Thất bại" --> FailedStore["Unrepairable Archive"]
+
+        WorkerPool -- "Biên dịch THÀNH CÔNG" --> SemanticAudit{"Semantic Safety Auditor<br/>[Đào Văn Tâm]<br/>(Chống cheat, bảo tồn chữ ký)"}
         
         SemanticAudit -- "Hợp lệ ngữ nghĩa" --> SuccessStore["Repaired Verified Store<br/>(Mã hoàn chỉnh)"]
-        SemanticAudit -- "Sai lệch ngữ nghĩa" --> BoundedLoop
+        SemanticAudit -- "Làm đổi đề/Cheat" --> BoundedLoop
         
-        BoundedLoop -- "Hết ngân sách thử" --> FailedStore["Unrepairable Error Archive"]
-        
-        SuccessStore & FailedStore --> Store["Replayable Error Store & Provenance Log<br/>[Mekdala Nounou & Đào Văn Tâm]<br/>(Phụ lục B JSONL Output)"]
+        SuccessStore & FailedStore --> Store["Replayable Error Store & Provenance Log<br/>[Mekdala Nounou & Đào Văn Tâm]<br/>(Phụ lục B JSON Output)"]
         
         Store --> Evaluator["Evaluation & Pareto Benchmark Engine<br/>[Đào Văn Tâm]<br/>(Latency P50/P95, QPS, Token Cost, Compile Rate)"]
     end

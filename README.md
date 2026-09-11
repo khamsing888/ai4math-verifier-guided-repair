@@ -30,15 +30,18 @@ Hệ thống được thiết kế theo mô hình 4 phân tầng chịu lỗi ca
 
 ```mermaid
 flowchart LR
-    In["Nhóm 5<br/>Mã lỗi"] --> Q["Hàng đợi phân tán<br/>(Priority Queue)"]
-    Q --> V["Lean 4 Verifier<br/>(Worker Pool)"]
-    V --> P["Error Parser<br/>& Taxonomy"]
-    P --> R{"Router"}
+    In["Nhóm 5<br/>Candidate Lỗi"] --> Q["Hàng đợi phân tán<br/>(Redis / Queue)"]
+    Q --> P["Error Parser<br/>& Taxonomy"]
+    P --> R{"Error<br/>Router"}
     R -->|Cú pháp/Import| Rule["Rule Fixer<br/>(0-Token)"]
     R -->|Kiểu/Logic| LLM["LLM Repair<br/>(Context)"]
-    Rule & LLM --> B{"Bounded Retry<br/>Controller"}
-    B -->|Thử lại| V
-    B -->|Hoàn tất| S["Replayable<br/>Error Store"]
+    Rule & LLM --> V["Lean 4 Verifier<br/>(Worker Pool)"]
+    V -->|Vẫn lỗi| B{"Bounded Retry<br/>Controller"}
+    B -->|Còn Budget| Q
+    B -->|Hết Budget| S["Replayable<br/>Error Store"]
+    V -->|Thành công| Audit{"Semantic<br/>Audit"}
+    Audit -->|Pass| S
+    Audit -->|Fail| B
 ```
 
 ---

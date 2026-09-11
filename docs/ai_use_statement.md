@@ -7,32 +7,33 @@
 
 ## 1. Bảng số liệu định lượng tổng hợp (Quantitative Summary)
 
-* **Tổng số phiên/hạng mục AI hỗ trợ:** `14`
-* **Ước tính số dòng mã & tài liệu AI đồng hành:** `~1965` dòng
+* **Tổng số phiên/hạng mục AI hỗ trợ:** `15`
+* **Ước tính số dòng mã & tài liệu AI đồng hành:** `~2060` dòng
 * **Cơ chế kiểm chứng bắt buộc:** 100% mã nguồn được xác minh qua unit test tự động và trình kiểm chứng Lean 4; không chấp nhận mã chưa kiểm chứng.
 
 ### Phân bổ theo loại tác vụ:
 | Loại tác vụ | Số lần ghi nhận | Tỷ trọng (%) |
 |:---|:---:|:---:|
-| Workspace Setup | 1 | 7.1% |
-| Governance & Harness | 1 | 7.1% |
-| Academic Proposal | 1 | 7.1% |
-| Taxonomy Design | 1 | 7.1% |
-| Dataset Curation | 1 | 7.1% |
-| Code Generation | 1 | 7.1% |
-| Baseline Implementation | 1 | 7.1% |
-| Testing & QA | 1 | 7.1% |
-| Team Roster & Governance | 1 | 7.1% |
-| Team Role Adjustment | 1 | 7.1% |
-| Environment & Tooling | 1 | 7.1% |
-| Lean 4 Interactive Verification | 1 | 7.1% |
-| Data Contract & Replayable Store | 1 | 7.1% |
-| System Architecture Documentation | 1 | 7.1% |
+| Workspace Setup | 1 | 6.7% |
+| Governance & Harness | 1 | 6.7% |
+| Academic Proposal | 1 | 6.7% |
+| Taxonomy Design | 1 | 6.7% |
+| Dataset Curation | 1 | 6.7% |
+| Code Generation | 1 | 6.7% |
+| Baseline Implementation | 1 | 6.7% |
+| Testing & QA | 1 | 6.7% |
+| Team Roster & Governance | 1 | 6.7% |
+| Team Role Adjustment | 1 | 6.7% |
+| Environment & Tooling | 1 | 6.7% |
+| Lean 4 Interactive Verification | 1 | 6.7% |
+| Data Contract & Replayable Store | 1 | 6.7% |
+| System Architecture Documentation | 1 | 6.7% |
+| Architecture Refinement | 1 | 6.7% |
 
 ### Phân bổ theo mô hình / công cụ AI:
 | Mô hình / Công cụ | Số lần ghi nhận | Tỷ trọng (%) |
 |:---|:---:|:---:|
-| Claude Code / Antigravity | 14 | 100.0% |
+| Claude Code / Antigravity | 15 | 100.0% |
 
 ---
 
@@ -54,6 +55,7 @@
 | 2026-09-11 03:03 | Tuần 1 | Claude Code / Antigravity | Lean 4 Interactive Verification | Xác thực môi trường Lean 4 và tiện ích VS Code Infoview hoạt động thành công trên máy (hiển thị Goals accomplished trên sample_theorem.lean) | VS Code Lean 4 Infoview hiển thị Goals accomplished thành công | Đào Văn Tâm | ✅ VERIFIED |
 | 2026-09-11 03:37 | Tuần 2 | Claude Code / Antigravity | Data Contract & Replayable Store | Xây dựng đặc tả Data Contract v0.1 với Nhóm 5 (docs/data_contract_group5_group6.md), module ReplayableErrorStore (src/error_store.py), demo replay script (scripts/replay_error_run.py) và 4 unit tests mới | Thực thi unittest discover, 9/9 tests passed in 0.183s và chạy thử nghiệm replay thành công | Đào Văn Tâm | ✅ VERIFIED |
 | 2026-09-11 07:14 | Tuần 1-2 | Claude Code / Antigravity | System Architecture Documentation | Xây dựng tài liệu kiến trúc hệ thống toàn diện (docs/architecture.md) gồm sơ đồ vĩ mô 8 nhóm, sơ đồ vi mô 4 phân tầng Nhóm 6, Sequence Diagram thực thi và nhúng vào README.md | Kiểm tra cú pháp Mermaid flowchart và sequence diagram | Đào Văn Tâm | ✅ VERIFIED |
+| 2026-09-11 07:19 | Tuần 1-2 | Claude Code / Antigravity | Architecture Refinement | Chuẩn hóa sơ đồ kiến trúc hệ thống (bản vẽ ASCII và Mermaid) tích hợp chính xác feedback loop của Bounded Retry Controller và Semantic Safety Check vào architecture.md, README.md và đề cương | Kiểm tra tính nhất quán sơ đồ giữa README, architecture.md và đề cương | Đào Văn Tâm | ✅ VERIFIED |
 
 ---
 

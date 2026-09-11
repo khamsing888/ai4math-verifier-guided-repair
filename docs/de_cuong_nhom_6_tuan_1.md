@@ -42,10 +42,12 @@ ightarrow 10.000$ candidates), hệ thống gặp nút thắt về lập lịch 
   * *Token Cost per Success:* Lượng token tiêu thụ trung bình cho mỗi bài sửa thành công.
 
 **8. Kiến trúc bản nháp (Draft Architecture):**  
-* `Input Queue` (Nhận candidate từ Nhóm 5) → `Lean 4 Verifier` → `Structured Error Parser` (JSON diagnostics) → `Error Taxonomy & Router` →
-  * Nhánh 1 (Lỗi đơn giản: import, typo, ngoặc): `Rule-based Fixer` (0-token cost).
-  * Nhánh 2 (Lỗi logic, sai kiểu): `LLM Repair Engine` (Error context injected).
-* → `Bounded Retry Controller` (Kiểm tra giới hạn ngân sách & số lần thử) → `Output Store & Replay Log`.
+* `Input Queue & Dispatcher` (Redis/RabbitMQ nhận candidate từ Nhóm 5) → `Structured Error Parser & Taxonomy` (phân loại 6 nhóm lỗi từ compiler diagnostics) → `Error Router` →
+  * Nhánh 1 (Lỗi đơn giản: cú pháp, import, ngoặc): `Rule-based Repair Engine` (0-token cost, < 5ms).
+  * Nhánh 2 (Lỗi phức tạp: sai kiểu, logic, tactic): `LLM Repair Engine` (tiêm ngữ cảnh lỗi có cấu trúc).
+* → `Lean 4 Verifier Worker Pool` (tập hợp worker đa tiến trình biên dịch kiểm chứng `lean --json`):
+  * *Nếu biên dịch thành công:* Chuyển qua `Semantic Safety Check` (chống cheat/đổi đề) → Ghi nhận `REPAIRED` vào `Result & Log Store`.
+  * *Nếu vẫn còn lỗi:* Chuyển qua `Bounded Retry Controller` (kiểm tra giới hạn số lần thử và timeout): còn ngân sách thì đưa lại vào hàng đợi `Input Queue`, hết ngân sách thì ghi nhận `FAILED / UNREPAIRABLE` vào `Result & Log Store`.
 
 **9. Phân vai thành viên:**  
 * **Đào Văn Tâm (B25CHHT112) - Trưởng nhóm:** Phụ trách chính *Evaluation, Pareto Analysis & Report* (Thành viên 6) / Dự phòng: *Queue & Worker System*.
