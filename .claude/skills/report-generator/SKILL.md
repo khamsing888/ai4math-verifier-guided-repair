@@ -18,6 +18,7 @@ Use this skill when drafting, auditing, or compiling the final Master course rep
 8. **Section 7: Ablation, Error Analysis & Threats to Validity:** Component breakdowns, failure taxonomy, limitations.
 9. **Section 8: Conclusion & Future Directions:** Summary of contributions and potential paper extension.
 10. **Appendices:**
-    - AI-use statement (specifying tools, prompts, verification protocols).
-    - Contribution statement (individual roles and verified PRs).
-    - Reproduction commands (one-command replication).
+    - AI-use statement: Directly embed quantitative tables and activity ledger from `docs/ai_use_statement.md`.
+    - Contribution statement: Directly embed roles, PRs, and defense items from `contributions.md`.
+    - Reproduction commands: Step-by-step commands to reproduce all baseline and scalability results.
+

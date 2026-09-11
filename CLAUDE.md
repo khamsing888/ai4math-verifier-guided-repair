@@ -85,9 +85,14 @@ python3 scripts/generate_figures.py --input results/raw/ --output results/figure
 * Never commit datasets or weights > 50MB to Git.
 * Store small samples (< 5MB) in `data_sample/`. Large datasets must be loaded via deterministic scripts with checksum validation (`scripts/download_data.sh`).
 
-### Rule 5: AI-Assisted Work Transparency
-* All assistance from LLMs/Claude must be logged in `docs/ai_use_statement.md`.
-* Generated mathematical expressions and formal code (Lean 4) must be machine-verified by the compiler; LLM hallucinations are unacceptable.
+### Rule 5: Continuous AI-Use Statement & Quantitative Logging (MANDATORY)
+* In accordance with PTIT INT4418 Master course rubrics, every substantial AI intervention (code generation, refactoring, taxonomy design, benchmark scripts, documentation) MUST be logged in `docs/ai_use_log.jsonl` and reflected in `docs/ai_use_statement.md`.
+* Use the automated utility:
+  ```bash
+  python3 scripts/log_ai_use.py --stage "<Stage>" --type "<TaskType>" --desc "<Description>" --verify "<VerificationMethod>" --lines <ApproxLines>
+  ```
+* All generated Lean 4 mathematical expressions, tactics, and code must be deterministically verified (by Lean 4 compiler or unit tests); raw AI claims are strictly prohibited.
+* The quantitative summary in `docs/ai_use_statement.md` will be directly incorporated into Section 8 & Appendix of the final report.
 
 ---
 

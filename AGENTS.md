@@ -12,12 +12,17 @@ This file guides all AI agents (Antigravity, Claude Code, Cursor, Windsurf, Copi
 * Use `gitnexus_query` or `gitnexus_context` if available to trace dependencies before modifying existing classes/functions.
 * When adding experiments, use `.claude/skills/experiment-runner` to ensure proper Phụ lục B metadata logging.
 * When generating or manipulating Lean 4 files, invoke `.claude/skills/lean4-verifier`.
+* Whenever completing non-trivial code or docs, invoke `.claude/skills/ai-use-tracker` and update `docs/ai_use_statement.md`.
 
 ## File Placement Standards
-* Pipeline code $ightarrow$ `src/`
-* Automated tests $ightarrow$ `tests/`
-* Experiment configuration $ightarrow$ `configs/`
-* Sample data & schemas $ightarrow$ `data_sample/`
-* Benchmarking scripts $ightarrow$ `scripts/`
-* Experiment outputs $ightarrow$ `results/raw/` and `results/figures/`
-* Scientific paper / documentation $ightarrow$ `reports/` and `docs/`
+* Pipeline code → `src/`
+* Automated tests → `tests/`
+* Experiment configuration → `configs/`
+* Sample data & schemas → `data_sample/`
+* Benchmarking scripts → `scripts/`
+* Experiment outputs → `results/raw/` and `results/figures/`
+* Scientific paper / documentation → `reports/` and `docs/`
+
+## Mandatory AI-Use Tracking Invariant
+* Every agent MUST log its contributions via `python3 scripts/log_ai_use.py`.
+* All AI outputs must be verified by either tests, compiler, or human audit. Unverified claims will be rejected during defense.
