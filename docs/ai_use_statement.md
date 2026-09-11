@@ -7,30 +7,31 @@
 
 ## 1. Bảng số liệu định lượng tổng hợp (Quantitative Summary)
 
-* **Tổng số phiên/hạng mục AI hỗ trợ:** `12`
-* **Ước tính số dòng mã & tài liệu AI đồng hành:** `~1425` dòng
+* **Tổng số phiên/hạng mục AI hỗ trợ:** `13`
+* **Ước tính số dòng mã & tài liệu AI đồng hành:** `~1805` dòng
 * **Cơ chế kiểm chứng bắt buộc:** 100% mã nguồn được xác minh qua unit test tự động và trình kiểm chứng Lean 4; không chấp nhận mã chưa kiểm chứng.
 
 ### Phân bổ theo loại tác vụ:
 | Loại tác vụ | Số lần ghi nhận | Tỷ trọng (%) |
 |:---|:---:|:---:|
-| Workspace Setup | 1 | 8.3% |
-| Governance & Harness | 1 | 8.3% |
-| Academic Proposal | 1 | 8.3% |
-| Taxonomy Design | 1 | 8.3% |
-| Dataset Curation | 1 | 8.3% |
-| Code Generation | 1 | 8.3% |
-| Baseline Implementation | 1 | 8.3% |
-| Testing & QA | 1 | 8.3% |
-| Team Roster & Governance | 1 | 8.3% |
-| Team Role Adjustment | 1 | 8.3% |
-| Environment & Tooling | 1 | 8.3% |
-| Lean 4 Interactive Verification | 1 | 8.3% |
+| Workspace Setup | 1 | 7.7% |
+| Governance & Harness | 1 | 7.7% |
+| Academic Proposal | 1 | 7.7% |
+| Taxonomy Design | 1 | 7.7% |
+| Dataset Curation | 1 | 7.7% |
+| Code Generation | 1 | 7.7% |
+| Baseline Implementation | 1 | 7.7% |
+| Testing & QA | 1 | 7.7% |
+| Team Roster & Governance | 1 | 7.7% |
+| Team Role Adjustment | 1 | 7.7% |
+| Environment & Tooling | 1 | 7.7% |
+| Lean 4 Interactive Verification | 1 | 7.7% |
+| Data Contract & Replayable Store | 1 | 7.7% |
 
 ### Phân bổ theo mô hình / công cụ AI:
 | Mô hình / Công cụ | Số lần ghi nhận | Tỷ trọng (%) |
 |:---|:---:|:---:|
-| Claude Code / Antigravity | 12 | 100.0% |
+| Claude Code / Antigravity | 13 | 100.0% |
 
 ---
 
@@ -50,6 +51,7 @@
 | 2026-09-11 02:14 | Tuần 1 | Claude Code / Antigravity | Team Role Adjustment | Điều chỉnh vai trò theo yêu cầu: Trần Quang Đức Dũng phụ trách Queue & Worker System Lead, Lâm Thành Trung phụ trách Rule-based Repair Lead | Kiểm tra tính nhất quán trong contributions.md, de_cuong_nhom_6_tuan_1.md và README.md | Đào Văn Tâm | ✅ VERIFIED |
 | 2026-09-11 02:18 | Tuần 1 | Claude Code / Antigravity | Environment & Tooling | Xây dựng script cài đặt Lean 4 (scripts/install_lean4.sh) và đóng gói môi trường containerized (Dockerfile, docker-compose.yml) | Kiểm tra cú pháp shell script và Docker Compose file | Đào Văn Tâm | ✅ VERIFIED |
 | 2026-09-11 03:03 | Tuần 1 | Claude Code / Antigravity | Lean 4 Interactive Verification | Xác thực môi trường Lean 4 và tiện ích VS Code Infoview hoạt động thành công trên máy (hiển thị Goals accomplished trên sample_theorem.lean) | VS Code Lean 4 Infoview hiển thị Goals accomplished thành công | Đào Văn Tâm | ✅ VERIFIED |
+| 2026-09-11 03:37 | Tuần 2 | Claude Code / Antigravity | Data Contract & Replayable Store | Xây dựng đặc tả Data Contract v0.1 với Nhóm 5 (docs/data_contract_group5_group6.md), module ReplayableErrorStore (src/error_store.py), demo replay script (scripts/replay_error_run.py) và 4 unit tests mới | Thực thi unittest discover, 9/9 tests passed in 0.183s và chạy thử nghiệm replay thành công | Đào Văn Tâm | ✅ VERIFIED |
 
 ---
 

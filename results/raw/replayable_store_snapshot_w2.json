@@ -1,0 +1,1126 @@
+[
+  {
+    "candidate_id": "ERR-001",
+    "problem_id": "PROB-ERR-001",
+    "statement_natural": "Missing colon in definition",
+    "candidate_code": "theorem foo (n : Nat) n > 0",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 23,
+        "message": "expected ':'"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "9824d1b5b73d286228be2b68f1e9e1fb78458f874542f2ec3198aca5560e44fa",
+    "created_at": "2026-09-11T03:36:54.409119+00:00",
+    "status": "REPAIRED",
+    "repaired_code": "theorem foo (n : Nat) : n > 0",
+    "repair_attempts": 1,
+    "repair_history": [
+      {
+        "replayed_at": "2026-09-11T03:36:54.410357+00:00",
+        "duration_ms": 0.02,
+        "success": true,
+        "repaired_code": "theorem foo (n : Nat) : n > 0",
+        "strategy": "rule_insert_colon"
+      }
+    ]
+  },
+  {
+    "candidate_id": "ERR-002",
+    "problem_id": "PROB-ERR-002",
+    "statement_natural": "Unclosed parenthesis in hypothesis",
+    "candidate_code": "theorem bar (a b : Real) (h : (a + b = 2 : a = 2 - b",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 41,
+        "message": "unexpected token ':', expected ')'"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "f8c72700a2cb63aacf674e5369b5c35e6a5eebdb29d3593dcd53ab13fd359181",
+    "created_at": "2026-09-11T03:36:54.409822+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-003",
+    "problem_id": "PROB-ERR-003",
+    "statement_natural": "Missing by before tactic block",
+    "candidate_code": "theorem thm1 (p q : Prop) : p ∧ q → p \n exact And.left",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 38,
+        "message": "expected ':=' or '|'"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "2406e09893995fd7051eff84201ef7474adc8af54afa4889833a3ef805d9f942",
+    "created_at": "2026-09-11T03:36:54.409839+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-004",
+    "problem_id": "PROB-ERR-004",
+    "statement_natural": "Unmatched square bracket in list",
+    "candidate_code": "def l : List Nat := [1, 2, 3",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 28,
+        "message": "expected ']'"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "5eb98c7422f00224bdb42532eff6c9dc86914185e848b7fe34b176ee44e6c614",
+    "created_at": "2026-09-11T03:36:54.409849+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-005",
+    "problem_id": "PROB-ERR-005",
+    "statement_natural": "Misplaced semicolon",
+    "candidate_code": "theorem thm2 : 1 + 1 = 2; := by rfl",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 25,
+        "message": "unexpected token ';'"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "6b0309ef3fa9d1c56ec63962438df2812d65c309e719a380d131175fba3d25e2",
+    "created_at": "2026-09-11T03:36:54.409858+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-006",
+    "problem_id": "PROB-ERR-006",
+    "statement_natural": "Missing theorem keyword",
+    "candidate_code": "simple_math (n : Nat) : n = n := by rfl",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 1,
+        "message": "expected command"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "b28ca2f8e92b3abd969074a9b362aa8259ad63efe394300bd3b3a992810f9ecf",
+    "created_at": "2026-09-11T03:36:54.409866+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-007",
+    "problem_id": "PROB-ERR-007",
+    "statement_natural": "Extra closing parenthesis",
+    "candidate_code": "theorem thm3 (x : Nat) : (x = x)) := by rfl",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 33,
+        "message": "unexpected token ')'"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "1cdddb0ab0e1bb457d590fb5f1aa8426fa753dac99e1b1bca2ffc712b116d961",
+    "created_at": "2026-09-11T03:36:54.409875+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-008",
+    "problem_id": "PROB-ERR-008",
+    "statement_natural": "Invalid Unicode symbol for implies",
+    "candidate_code": "theorem thm4 (p q : Prop) : p -> q := by intro h",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 31,
+        "message": "expected '→' or ':='"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "9e199bb8e7369c13cacb974584d699b6973eb2ec7e65924a80cdcb1685b4a4e3",
+    "created_at": "2026-09-11T03:36:54.409883+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-009",
+    "problem_id": "PROB-ERR-009",
+    "statement_natural": "Missing Real import",
+    "candidate_code": "theorem real_pos (x : Real) : x^2 >= 0 := sorry",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 23,
+        "message": "unknown identifier 'Real'"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "38547f7117f4551e47a59366e03477edf0ae64a7b3cdd1975950ae3e349a8706",
+    "created_at": "2026-09-11T03:36:54.409891+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 1,
+    "repair_history": [
+      {
+        "replayed_at": "2026-09-11T03:36:54.410497+00:00",
+        "duration_ms": 0.02,
+        "success": false,
+        "repaired_code": null,
+        "strategy": "rule_no_match"
+      }
+    ]
+  },
+  {
+    "candidate_id": "ERR-010",
+    "problem_id": "PROB-ERR-010",
+    "statement_natural": "Missing Complex import",
+    "candidate_code": "theorem c_im (z : Complex) : z.im = 0 := sorry",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 19,
+        "message": "unknown identifier 'Complex'"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "697b7571ed20b3859d35c79ee1522a733c1acecd3cf40d0a608a8a131852a0cc",
+    "created_at": "2026-09-11T03:36:54.409904+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-011",
+    "problem_id": "PROB-ERR-011",
+    "statement_natural": "Missing Matrix import",
+    "candidate_code": "def M : Matrix (Fin 2) (Fin 2) Nat := sorry",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 9,
+        "message": "unknown identifier 'Matrix'"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "3a346fb5ab516877ebeae56b40ae33ac01f31adf0f936d65a74f8c1352250da7",
+    "created_at": "2026-09-11T03:36:54.409912+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-012",
+    "problem_id": "PROB-ERR-012",
+    "statement_natural": "Missing Topology import",
+    "candidate_code": "theorem is_open_univ (X : Type*) [TopologicalSpace X] : IsOpen (Set.univ : Set X) := sorry",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 35,
+        "message": "unknown identifier 'TopologicalSpace'"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "91ef6b608184f6bfae61e27d32fda6de7e8e5e7f926e6d2325601b4f332ee227",
+    "created_at": "2026-09-11T03:36:54.409926+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-013",
+    "problem_id": "PROB-ERR-013",
+    "statement_natural": "Missing Finset import",
+    "candidate_code": "theorem sum_empty : ∑ i in (∅ : Finset Nat), i = 0 := sorry",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 33,
+        "message": "unknown identifier 'Finset'"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "4709aa895eb6fbcae871d469e1cf61806f4349b727ec693ebed02a68bb8d9688",
+    "created_at": "2026-09-11T03:36:54.409934+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-014",
+    "problem_id": "PROB-ERR-014",
+    "statement_natural": "Missing GroupTheory import",
+    "candidate_code": "theorem lagrange (G : Type*) [Group G] [Fintype G] (H : Subgroup G) : True := sorry",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 56,
+        "message": "unknown identifier 'Subgroup'"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "8389cb678cf055ab088df082f9ff17a1f0b072a04da0c21a98add5ed6deb1c9f",
+    "created_at": "2026-09-11T03:36:54.409942+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-015",
+    "problem_id": "PROB-ERR-015",
+    "statement_natural": "Missing Prime import",
+    "candidate_code": "theorem p_dvd (p : Nat) [Fact (Nat.Prime p)] : True := sorry",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 26,
+        "message": "unknown identifier 'Fact'"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "4e14b0ae3839670899f9101c24e2a8cfbb8248728ecc93b8eed7d6ef600ab1f7",
+    "created_at": "2026-09-11T03:36:54.409950+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-016",
+    "problem_id": "PROB-ERR-016",
+    "statement_natural": "Missing MeasureTheory import",
+    "candidate_code": "theorem measure_zero (μ : Measure ℝ) : True := sorry",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 27,
+        "message": "unknown identifier 'Measure'"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "a84fafd103152a6526bc177f2b7e1becd686c7744a6ce31d7b99324696de321b",
+    "created_at": "2026-09-11T03:36:54.409961+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-017",
+    "problem_id": "PROB-ERR-017",
+    "statement_natural": "Incorrect function name for list length",
+    "candidate_code": "def len (l : List Nat) : Nat := l.len",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 35,
+        "message": "unknown identifier 'len' in List"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "1521abbe8ebcd79e151e2b2c9332ff6afce41af0e93b5b8680955f2fa9aea6e5",
+    "created_at": "2026-09-11T03:36:54.409969+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-018",
+    "problem_id": "PROB-ERR-018",
+    "statement_natural": "Typo in Nat.succ",
+    "candidate_code": "def next (n : Nat) : Nat := Nat.suc n",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 29,
+        "message": "unknown constant 'Nat.suc'"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "860713f0dbf397de07445a1663de8c5a64c5ed09a42d514781d23ac026a11cfe",
+    "created_at": "2026-09-11T03:36:54.409977+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-019",
+    "problem_id": "PROB-ERR-019",
+    "statement_natural": "Using sqrt without namespace",
+    "candidate_code": "theorem sq_root (x : Real) : sqrt (x^2) = x := sorry",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 30,
+        "message": "unknown identifier 'sqrt'"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "7cd05c20768b1e57409935341343fe3549316e1d489aab035ad89bb7b2c45ed5",
+    "created_at": "2026-09-11T03:36:54.409985+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-020",
+    "problem_id": "PROB-ERR-020",
+    "statement_natural": "Typo in add_comm",
+    "candidate_code": "theorem comm (a b : Nat) : a + b = b + a := by rw [Nat.add_com]",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 52,
+        "message": "unknown theorem 'Nat.add_com'"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "8371b08be324110da344d630e56814333e523c1007462a464e1df2a4729168f7",
+    "created_at": "2026-09-11T03:36:54.409992+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-021",
+    "problem_id": "PROB-ERR-021",
+    "statement_natural": "Calling size instead of length on String",
+    "candidate_code": "def str_len (s : String) : Nat := s.size",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 37,
+        "message": "unknown identifier 'size' in String"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "bf085851cdcf1fbd71cbc851a32e053eef5a96225077563f120040a033db9f34",
+    "created_at": "2026-09-11T03:36:54.410000+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-022",
+    "problem_id": "PROB-ERR-022",
+    "statement_natural": "Typo in simp tactic arguments",
+    "candidate_code": "theorem sim_t (n : Nat) : n + 0 = n := by semip",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 43,
+        "message": "unknown tactic 'semip'"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "c979ed0052582cd7832ad28da3819a59095913f930a0bebf86df9f59230ed7c3",
+    "created_at": "2026-09-11T03:36:54.410007+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-023",
+    "problem_id": "PROB-ERR-023",
+    "statement_natural": "Missing open Classical namespace",
+    "candidate_code": "theorem em (p : Prop) : p ∨ ¬p := by exact Classical.some sorry",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 45,
+        "message": "unknown identifier 'Classical.some'"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "385095ff0577bc31acdf5d48157c8a366ece35063067d208241f402aad677605",
+    "created_at": "2026-09-11T03:36:54.410017+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-024",
+    "problem_id": "PROB-ERR-024",
+    "statement_natural": "Typo in Finset.card",
+    "candidate_code": "def c (s : Finset Nat) : Nat := s.cardinal",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 35,
+        "message": "unknown identifier 'cardinal' in Finset"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "489e2adad57c2f35c583a0c536ce91bf8221b83764ebe3d6346958dc0c3b85cb",
+    "created_at": "2026-09-11T03:36:54.410025+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-025",
+    "problem_id": "PROB-ERR-025",
+    "statement_natural": "Passing Nat to Int parameter",
+    "candidate_code": "def add_int (a b : Int) : Int := a + b\ndef test : Int := add_int 3 4",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 2,
+        "column": 27,
+        "message": "type mismatch at term 3, has type Nat but expected Int"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "b9449af182a3fc82c7295acda0e1edd14ac521c5f816b1388138c523b09c5637",
+    "created_at": "2026-09-11T03:36:54.410033+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 1,
+    "repair_history": [
+      {
+        "replayed_at": "2026-09-11T03:36:54.410535+00:00",
+        "duration_ms": 0.01,
+        "success": false,
+        "repaired_code": null,
+        "strategy": "rule_no_match"
+      }
+    ]
+  },
+  {
+    "candidate_id": "ERR-026",
+    "problem_id": "PROB-ERR-026",
+    "statement_natural": "Equality between incompatible types",
+    "candidate_code": "theorem eq_err (n : Nat) (z : Int) : n = z := sorry",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 38,
+        "message": "type mismatch: Nat cannot be unified with Int"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "47a8da2e4fc888898e7d57af14fb1a6c670304ba7cbfbbb5628d3d7dad4c14af",
+    "created_at": "2026-09-11T03:36:54.410044+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-027",
+    "problem_id": "PROB-ERR-027",
+    "statement_natural": "Returning Bool instead of Prop",
+    "candidate_code": "def is_even (n : Nat) : Prop := (n % 2 == 0)",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 33,
+        "message": "type mismatch: term has type Bool but expected Prop"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "8b592b76d011a38b35a42de580febc86ecfbcf3f4261c3289f803c6b48527823",
+    "created_at": "2026-09-11T03:36:54.410052+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-028",
+    "problem_id": "PROB-ERR-028",
+    "statement_natural": "Applying function to wrong argument type",
+    "candidate_code": "def f (x : Real) : Real := x + 1.0\ndef g (n : Nat) := f n",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 2,
+        "column": 22,
+        "message": "type mismatch at argument n: expected Real, got Nat"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "5bc5250fd05475e8119924dd06f6e242c8c3463a2672e9456f33158ac0cd0028",
+    "created_at": "2026-09-11T03:36:54.410061+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-029",
+    "problem_id": "PROB-ERR-029",
+    "statement_natural": "Subtype violation in Fin",
+    "candidate_code": "def mk_fin : Fin 5 := ⟨7, by decide⟩",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 23,
+        "message": "type mismatch: 7 is not strictly less than 5"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "7030c896adfc628daea00134105c6d9f46c19f7679a3fb2c59e547aeffe2723e",
+    "created_at": "2026-09-11T03:36:54.410068+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-030",
+    "problem_id": "PROB-ERR-030",
+    "statement_natural": "Mismatch in matrix dimensions",
+    "candidate_code": "def mul_err (A : Matrix (Fin 2) (Fin 3) ℝ) (B : Matrix (Fin 4) (Fin 2) ℝ) := A * B",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 80,
+        "message": "matrix dimension mismatch: inner dimensions (Fin 3) and (Fin 4) do not match"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "9d05687b0d0fe1158dda1b38c3843d3b21f5243665f00eeed8d3a9a5371e8367",
+    "created_at": "2026-09-11T03:36:54.410076+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-031",
+    "problem_id": "PROB-ERR-031",
+    "statement_natural": "Incompatible type in list concatenation",
+    "candidate_code": "def cat_err : List Nat := [1, 2] ++ ['a']",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 37,
+        "message": "type mismatch at 'a': expected Nat, got Char"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "b9b8380c4c9b19de21a5269c7e6eb41a31d8e828271a422b97e46d04d9cbcb0c",
+    "created_at": "2026-09-11T03:36:54.410084+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-032",
+    "problem_id": "PROB-ERR-032",
+    "statement_natural": "Wrong assumption type in implication",
+    "candidate_code": "theorem imp_err (h : 1 = 1) : 2 = 2 → 1 = 1 := by intro h2; exact h2",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 63,
+        "message": "type mismatch: expected 1 = 1, got 2 = 2"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "829eeb7fe5e0e4e3ce3b8cde02c7e60d3c55cbb03a1c14e790208e7909cace0b",
+    "created_at": "2026-09-11T03:36:54.410091+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-033",
+    "problem_id": "PROB-ERR-033",
+    "statement_natural": "Deeply recursive rewrite loop",
+    "candidate_code": "theorem loop_rw (n : Nat) : n = n := by repeat rw [Nat.add_zero]",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 45,
+        "message": "(deterministic) timeout at tactic repeat rw"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "071b4a8d0e4c69b4e9a09aad9670a6ca71f95e406012201736ea7478ed1c0398",
+    "created_at": "2026-09-11T03:36:54.410099+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-034",
+    "problem_id": "PROB-ERR-034",
+    "statement_natural": "Heartbeats exceeded during simp",
+    "candidate_code": "theorem big_simp : True := by simp [Nat.add_assoc, Nat.add_comm] -- looping rules",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 31,
+        "message": "maximum heartbeats exceeded (200000)"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "8b32c0c3045f4039ea3b4f86799cc3530fbc2749dc43e3ceded898b0c7a870f5",
+    "created_at": "2026-09-11T03:36:54.410107+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-035",
+    "problem_id": "PROB-ERR-035",
+    "statement_natural": "Heavy decision procedure on large bounds",
+    "candidate_code": "theorem decide_large : 10^8 + 1 > 10^8 := by decide",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 45,
+        "message": "heartbeats limit reached in kernel evaluation"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "7544c6f4b73a3ef6e4f59d7c98f5508caae6262aac01b465af4ee4869e73d46a",
+    "created_at": "2026-09-11T03:36:54.410118+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-036",
+    "problem_id": "PROB-ERR-036",
+    "statement_natural": "Infinite loop in macro expansion",
+    "candidate_code": "macro \"loop_mac\" : term => `(loop_mac)\ndef test := loop_mac",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 2,
+        "column": 13,
+        "message": "deep recursion detected in macro expansion"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "5e5833ac23d4edbecf11ac3c47f73817f1794b054c2cc2755414a9eec5f6ca39",
+    "created_at": "2026-09-11T03:36:54.410208+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-037",
+    "problem_id": "PROB-ERR-037",
+    "statement_natural": "Combinatorial explosion in omega tactic",
+    "candidate_code": "theorem omega_burst (a b c d e f g h : Nat) : True := by omega",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 60,
+        "message": "tactic omega timed out after 10000ms"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "c880b5fd483c4a9f998a5e0232aa8498fc0c3356649d33648c77bdbc954970cf",
+    "created_at": "2026-09-11T03:36:54.410217+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-038",
+    "problem_id": "PROB-ERR-038",
+    "statement_natural": "Proving False to prove goal trivially",
+    "candidate_code": "theorem fermat_cheat (n : Nat) (hn : n > 2) : ∀ x y z : Nat, x^n + y^n = z^n → x*y*z = 0 := by intro x y z h; have : False := sorry; contradiction",
+    "compiler_diagnostics": [
+      {
+        "severity": "warning",
+        "line": 1,
+        "column": 110,
+        "message": "warning: theorem uses sorry or dubious assumption"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "f68d931b8d669d3e9511ae0f7402353697ff45c597d9e545af2578f882123016",
+    "created_at": "2026-09-11T03:36:54.410226+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-039",
+    "problem_id": "PROB-ERR-039",
+    "statement_natural": "Modifying goal to True",
+    "candidate_code": "theorem goldbach_mod : True := by trivial",
+    "compiler_diagnostics": [
+      {
+        "severity": "warning",
+        "line": 1,
+        "column": 24,
+        "message": "statement does not match informal theorem target"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "92034abfbb18d9236dea1ff011062ef6cd2a49ba76db6e32789a1bd1a8dc9609",
+    "created_at": "2026-09-11T03:36:54.410234+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-040",
+    "problem_id": "PROB-ERR-040",
+    "statement_natural": "Inverting quantifier from forall to exists",
+    "candidate_code": "theorem prime_cheat : ∃ p : Nat, Nat.Prime p := ⟨2, by decide⟩",
+    "compiler_diagnostics": [
+      {
+        "severity": "warning",
+        "line": 1,
+        "column": 1,
+        "message": "statement altered quantifier from ∀ to ∃"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "b5835e631e29c8c1f2fdceb5e6bbc0b6ae64d2cebb26de6002c3bb678a597826",
+    "created_at": "2026-09-11T03:36:54.410242+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-041",
+    "problem_id": "PROB-ERR-041",
+    "statement_natural": "Dropping crucial hypothesis",
+    "candidate_code": "theorem division_by_zero (a b : Real) : a / b * b = a := sorry",
+    "compiler_diagnostics": [
+      {
+        "severity": "warning",
+        "line": 1,
+        "column": 41,
+        "message": "missing hypothesis h : b ≠ 0 present in original problem"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "ebfa82479333ba21d4f2ca848480c7c2e2bd973f72493bc7551cc6389f9bf61a",
+    "created_at": "2026-09-11T03:36:54.410250+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-042",
+    "problem_id": "PROB-ERR-042",
+    "statement_natural": "Replacing equality with trivial inequality",
+    "candidate_code": "theorem eq_to_le (x y : Nat) : x + y ≥ 0 := by omega",
+    "compiler_diagnostics": [
+      {
+        "severity": "warning",
+        "line": 1,
+        "column": 31,
+        "message": "statement altered target equality to trivial inequality"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "d57066259a04ea326b4fdfb0597e388e4e2f63c6e7d9532399108db3c6082455",
+    "created_at": "2026-09-11T03:36:54.410261+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-043",
+    "problem_id": "PROB-ERR-043",
+    "statement_natural": "Synthetic typing error 43",
+    "candidate_code": "def err_43 (x : Nat) : Int := x",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 25,
+        "message": "type mismatch: expected Int, got Nat"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "f2aa079c9725bd35c0d2d050cf24af1c7771cd6b86c8b4ef9f1ec3bc7b46b2cd",
+    "created_at": "2026-09-11T03:36:54.410269+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-044",
+    "problem_id": "PROB-ERR-044",
+    "statement_natural": "Synthetic typing error 44",
+    "candidate_code": "def err_44 (x : Nat) : Int := x",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 25,
+        "message": "type mismatch: expected Int, got Nat"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "8b5a0f5c01f940cbdfd91d8016b5de743808e6db0100505c30cb14b0df85ce85",
+    "created_at": "2026-09-11T03:36:54.410286+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-045",
+    "problem_id": "PROB-ERR-045",
+    "statement_natural": "Synthetic typing error 45",
+    "candidate_code": "def err_45 (x : Nat) : Int := x",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 25,
+        "message": "type mismatch: expected Int, got Nat"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "a9b7edb5311b3f63a193da9de70d8ee136e31f7a549ab2ed65620375cb026ab7",
+    "created_at": "2026-09-11T03:36:54.410295+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-046",
+    "problem_id": "PROB-ERR-046",
+    "statement_natural": "Synthetic typing error 46",
+    "candidate_code": "def err_46 (x : Nat) : Int := x",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 25,
+        "message": "type mismatch: expected Int, got Nat"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "472dc08e1e5a51605617e35f6fb780393f169869409cacd2720f135f5b37a922",
+    "created_at": "2026-09-11T03:36:54.410302+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-047",
+    "problem_id": "PROB-ERR-047",
+    "statement_natural": "Synthetic typing error 47",
+    "candidate_code": "def err_47 (x : Nat) : Int := x",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 25,
+        "message": "type mismatch: expected Int, got Nat"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "a174fb350990897312f47db7be4d10afb92ff3e2c97f920f7826f722cbb9a345",
+    "created_at": "2026-09-11T03:36:54.410310+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-048",
+    "problem_id": "PROB-ERR-048",
+    "statement_natural": "Synthetic typing error 48",
+    "candidate_code": "def err_48 (x : Nat) : Int := x",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 25,
+        "message": "type mismatch: expected Int, got Nat"
+      }
+    ],
+    "split": "holdout",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "e2c8fefca75fa4ca81d80e60d5ddc1703001113fd96421c8bf350b21e740f00e",
+    "created_at": "2026-09-11T03:36:54.410317+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-049",
+    "problem_id": "PROB-ERR-049",
+    "statement_natural": "Synthetic typing error 49",
+    "candidate_code": "def err_49 (x : Nat) : Int := x",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 25,
+        "message": "type mismatch: expected Int, got Nat"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "8f3bc83e37b310a90d87cc5c9a398de08061560c4a2ff44d0e5819e97794157f",
+    "created_at": "2026-09-11T03:36:54.410325+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  },
+  {
+    "candidate_id": "ERR-050",
+    "problem_id": "PROB-ERR-050",
+    "statement_natural": "Synthetic typing error 50",
+    "candidate_code": "def err_50 (x : Nat) : Int := x",
+    "compiler_diagnostics": [
+      {
+        "severity": "error",
+        "line": 1,
+        "column": 25,
+        "message": "type mismatch: expected Int, got Nat"
+      }
+    ],
+    "split": "train",
+    "source_dataset": "AI4Math-Sample",
+    "checksum_sha256": "5540ad102bd671ba7a9def77b1bb3db7e528a5a6a381e8a8522bacea5e191986",
+    "created_at": "2026-09-11T03:36:54.410332+00:00",
+    "status": "PENDING",
+    "repaired_code": null,
+    "repair_attempts": 0,
+    "repair_history": []
+  }
+]
