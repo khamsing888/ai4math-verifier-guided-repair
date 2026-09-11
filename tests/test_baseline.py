@@ -1,14 +1,21 @@
 """Unit tests for baseline execution and metrics calculation."""
 
-import os
-import pytest
+import unittest
 from src.baseline import run_baseline
 
 
-def test_run_baseline(tmp_path):
-    record = run_baseline("configs/baseline.yaml")
-    assert "run_id" in record
-    assert record["status"] == "SUCCESS"
-    assert "latency_p50_ms" in record["metrics"]
-    assert "latency_p95_ms" in record["metrics"]
-    assert record["metrics"]["latency_p95_ms"] >= record["metrics"]["latency_p50_ms"]
+class TestBaseline(unittest.TestCase):
+    def test_run_baseline(self):
+        record = run_baseline("configs/baseline.yaml")
+        self.assertIn("run_id", record)
+        self.assertEqual(record["status"], "SUCCESS")
+        self.assertIn("latency_p50_ms", record["metrics"])
+        self.assertIn("latency_p95_ms", record["metrics"])
+        self.assertGreaterEqual(
+            record["metrics"]["latency_p95_ms"],
+            record["metrics"]["latency_p50_ms"]
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,0 +1,25 @@
+{
+  "run_id": "baseline-20260911015336-7f01bd",
+  "timestamp": "2026-09-11T01:53:36.308428+00:00",
+  "git_commit": "initial",
+  "data_version": "v0.1-sample",
+  "machine": {
+    "os": "macOS-12.7.6-x86_64-i386-64bit",
+    "cpu": "i386",
+    "python": "3.12.8"
+  },
+  "parameters": {
+    "config_path": "configs/baseline.yaml",
+    "queries_evaluated": 100
+  },
+  "seed": 42,
+  "timeout": 60,
+  "metrics": {
+    "throughput_qps": 179.41,
+    "latency_p50_ms": 4.12,
+    "latency_p95_ms": 15.88,
+    "recall_at_10": 0.52
+  },
+  "status": "SUCCESS",
+  "log_path": "logs/baseline-20260911015336-7f01bd.log"
+}

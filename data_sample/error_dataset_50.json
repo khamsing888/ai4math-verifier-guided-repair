@@ -1,0 +1,802 @@
+[
+  {
+    "error_id": "ERR-001",
+    "title": "Missing colon in definition",
+    "category_code": "SYN_01",
+    "category_name": "SYNTAX_ERROR",
+    "split": "train",
+    "code_snippet": "theorem foo (n : Nat) n > 0",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 23,
+      "message": "expected ':'"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-002",
+    "title": "Unclosed parenthesis in hypothesis",
+    "category_code": "SYN_01",
+    "category_name": "SYNTAX_ERROR",
+    "split": "train",
+    "code_snippet": "theorem bar (a b : Real) (h : (a + b = 2 : a = 2 - b",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 41,
+      "message": "unexpected token ':', expected ')'"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-003",
+    "title": "Missing by before tactic block",
+    "category_code": "SYN_01",
+    "category_name": "SYNTAX_ERROR",
+    "split": "holdout",
+    "code_snippet": "theorem thm1 (p q : Prop) : p \u2227 q \u2192 p \n exact And.left",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 38,
+      "message": "expected ':=' or '|'"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-004",
+    "title": "Unmatched square bracket in list",
+    "category_code": "SYN_01",
+    "category_name": "SYNTAX_ERROR",
+    "split": "train",
+    "code_snippet": "def l : List Nat := [1, 2, 3",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 28,
+      "message": "expected ']'"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-005",
+    "title": "Misplaced semicolon",
+    "category_code": "SYN_01",
+    "category_name": "SYNTAX_ERROR",
+    "split": "train",
+    "code_snippet": "theorem thm2 : 1 + 1 = 2; := by rfl",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 25,
+      "message": "unexpected token ';'"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-006",
+    "title": "Missing theorem keyword",
+    "category_code": "SYN_01",
+    "category_name": "SYNTAX_ERROR",
+    "split": "holdout",
+    "code_snippet": "simple_math (n : Nat) : n = n := by rfl",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 1,
+      "message": "expected command"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-007",
+    "title": "Extra closing parenthesis",
+    "category_code": "SYN_01",
+    "category_name": "SYNTAX_ERROR",
+    "split": "train",
+    "code_snippet": "theorem thm3 (x : Nat) : (x = x)) := by rfl",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 33,
+      "message": "unexpected token ')'"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-008",
+    "title": "Invalid Unicode symbol for implies",
+    "category_code": "SYN_01",
+    "category_name": "SYNTAX_ERROR",
+    "split": "train",
+    "code_snippet": "theorem thm4 (p q : Prop) : p -> q := by intro h",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 31,
+      "message": "expected '\u2192' or ':='"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-009",
+    "title": "Missing Real import",
+    "category_code": "IMP_02",
+    "category_name": "MISSING_IMPORT",
+    "split": "holdout",
+    "code_snippet": "theorem real_pos (x : Real) : x^2 >= 0 := sorry",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 23,
+      "message": "unknown identifier 'Real'"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-010",
+    "title": "Missing Complex import",
+    "category_code": "IMP_02",
+    "category_name": "MISSING_IMPORT",
+    "split": "train",
+    "code_snippet": "theorem c_im (z : Complex) : z.im = 0 := sorry",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 19,
+      "message": "unknown identifier 'Complex'"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-011",
+    "title": "Missing Matrix import",
+    "category_code": "IMP_02",
+    "category_name": "MISSING_IMPORT",
+    "split": "train",
+    "code_snippet": "def M : Matrix (Fin 2) (Fin 2) Nat := sorry",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 9,
+      "message": "unknown identifier 'Matrix'"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-012",
+    "title": "Missing Topology import",
+    "category_code": "IMP_02",
+    "category_name": "MISSING_IMPORT",
+    "split": "holdout",
+    "code_snippet": "theorem is_open_univ (X : Type*) [TopologicalSpace X] : IsOpen (Set.univ : Set X) := sorry",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 35,
+      "message": "unknown identifier 'TopologicalSpace'"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-013",
+    "title": "Missing Finset import",
+    "category_code": "IMP_02",
+    "category_name": "MISSING_IMPORT",
+    "split": "train",
+    "code_snippet": "theorem sum_empty : \u2211 i in (\u2205 : Finset Nat), i = 0 := sorry",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 33,
+      "message": "unknown identifier 'Finset'"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-014",
+    "title": "Missing GroupTheory import",
+    "category_code": "IMP_02",
+    "category_name": "MISSING_IMPORT",
+    "split": "train",
+    "code_snippet": "theorem lagrange (G : Type*) [Group G] [Fintype G] (H : Subgroup G) : True := sorry",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 56,
+      "message": "unknown identifier 'Subgroup'"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-015",
+    "title": "Missing Prime import",
+    "category_code": "IMP_02",
+    "category_name": "MISSING_IMPORT",
+    "split": "holdout",
+    "code_snippet": "theorem p_dvd (p : Nat) [Fact (Nat.Prime p)] : True := sorry",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 26,
+      "message": "unknown identifier 'Fact'"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-016",
+    "title": "Missing MeasureTheory import",
+    "category_code": "IMP_02",
+    "category_name": "MISSING_IMPORT",
+    "split": "train",
+    "code_snippet": "theorem measure_zero (\u03bc : Measure \u211d) : True := sorry",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 27,
+      "message": "unknown identifier 'Measure'"
+    },
+    "suggested_strategy": "rule_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-017",
+    "title": "Incorrect function name for list length",
+    "category_code": "ID_03",
+    "category_name": "UNKNOWN_IDENTIFIER",
+    "split": "train",
+    "code_snippet": "def len (l : List Nat) : Nat := l.len",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 35,
+      "message": "unknown identifier 'len' in List"
+    },
+    "suggested_strategy": "hybrid_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-018",
+    "title": "Typo in Nat.succ",
+    "category_code": "ID_03",
+    "category_name": "UNKNOWN_IDENTIFIER",
+    "split": "holdout",
+    "code_snippet": "def next (n : Nat) : Nat := Nat.suc n",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 29,
+      "message": "unknown constant 'Nat.suc'"
+    },
+    "suggested_strategy": "hybrid_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-019",
+    "title": "Using sqrt without namespace",
+    "category_code": "ID_03",
+    "category_name": "UNKNOWN_IDENTIFIER",
+    "split": "train",
+    "code_snippet": "theorem sq_root (x : Real) : sqrt (x^2) = x := sorry",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 30,
+      "message": "unknown identifier 'sqrt'"
+    },
+    "suggested_strategy": "hybrid_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-020",
+    "title": "Typo in add_comm",
+    "category_code": "ID_03",
+    "category_name": "UNKNOWN_IDENTIFIER",
+    "split": "train",
+    "code_snippet": "theorem comm (a b : Nat) : a + b = b + a := by rw [Nat.add_com]",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 52,
+      "message": "unknown theorem 'Nat.add_com'"
+    },
+    "suggested_strategy": "hybrid_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-021",
+    "title": "Calling size instead of length on String",
+    "category_code": "ID_03",
+    "category_name": "UNKNOWN_IDENTIFIER",
+    "split": "holdout",
+    "code_snippet": "def str_len (s : String) : Nat := s.size",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 37,
+      "message": "unknown identifier 'size' in String"
+    },
+    "suggested_strategy": "hybrid_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-022",
+    "title": "Typo in simp tactic arguments",
+    "category_code": "ID_03",
+    "category_name": "UNKNOWN_IDENTIFIER",
+    "split": "train",
+    "code_snippet": "theorem sim_t (n : Nat) : n + 0 = n := by semip",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 43,
+      "message": "unknown tactic 'semip'"
+    },
+    "suggested_strategy": "hybrid_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-023",
+    "title": "Missing open Classical namespace",
+    "category_code": "ID_03",
+    "category_name": "UNKNOWN_IDENTIFIER",
+    "split": "train",
+    "code_snippet": "theorem em (p : Prop) : p \u2228 \u00acp := by exact Classical.some sorry",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 45,
+      "message": "unknown identifier 'Classical.some'"
+    },
+    "suggested_strategy": "hybrid_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-024",
+    "title": "Typo in Finset.card",
+    "category_code": "ID_03",
+    "category_name": "UNKNOWN_IDENTIFIER",
+    "split": "holdout",
+    "code_snippet": "def c (s : Finset Nat) : Nat := s.cardinal",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 35,
+      "message": "unknown identifier 'cardinal' in Finset"
+    },
+    "suggested_strategy": "hybrid_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-025",
+    "title": "Passing Nat to Int parameter",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "train",
+    "code_snippet": "def add_int (a b : Int) : Int := a + b\ndef test : Int := add_int 3 4",
+    "compiler_log": {
+      "severity": "error",
+      "line": 2,
+      "column": 27,
+      "message": "type mismatch at term 3, has type Nat but expected Int"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "MEDIUM"
+  },
+  {
+    "error_id": "ERR-026",
+    "title": "Equality between incompatible types",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "train",
+    "code_snippet": "theorem eq_err (n : Nat) (z : Int) : n = z := sorry",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 38,
+      "message": "type mismatch: Nat cannot be unified with Int"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "MEDIUM"
+  },
+  {
+    "error_id": "ERR-027",
+    "title": "Returning Bool instead of Prop",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "holdout",
+    "code_snippet": "def is_even (n : Nat) : Prop := (n % 2 == 0)",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 33,
+      "message": "type mismatch: term has type Bool but expected Prop"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "MEDIUM"
+  },
+  {
+    "error_id": "ERR-028",
+    "title": "Applying function to wrong argument type",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "train",
+    "code_snippet": "def f (x : Real) : Real := x + 1.0\ndef g (n : Nat) := f n",
+    "compiler_log": {
+      "severity": "error",
+      "line": 2,
+      "column": 22,
+      "message": "type mismatch at argument n: expected Real, got Nat"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "MEDIUM"
+  },
+  {
+    "error_id": "ERR-029",
+    "title": "Subtype violation in Fin",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "train",
+    "code_snippet": "def mk_fin : Fin 5 := \u27e87, by decide\u27e9",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 23,
+      "message": "type mismatch: 7 is not strictly less than 5"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "MEDIUM"
+  },
+  {
+    "error_id": "ERR-030",
+    "title": "Mismatch in matrix dimensions",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "holdout",
+    "code_snippet": "def mul_err (A : Matrix (Fin 2) (Fin 3) \u211d) (B : Matrix (Fin 4) (Fin 2) \u211d) := A * B",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 80,
+      "message": "matrix dimension mismatch: inner dimensions (Fin 3) and (Fin 4) do not match"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "MEDIUM"
+  },
+  {
+    "error_id": "ERR-031",
+    "title": "Incompatible type in list concatenation",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "train",
+    "code_snippet": "def cat_err : List Nat := [1, 2] ++ ['a']",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 37,
+      "message": "type mismatch at 'a': expected Nat, got Char"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "MEDIUM"
+  },
+  {
+    "error_id": "ERR-032",
+    "title": "Wrong assumption type in implication",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "train",
+    "code_snippet": "theorem imp_err (h : 1 = 1) : 2 = 2 \u2192 1 = 1 := by intro h2; exact h2",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 63,
+      "message": "type mismatch: expected 1 = 1, got 2 = 2"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "MEDIUM"
+  },
+  {
+    "error_id": "ERR-033",
+    "title": "Deeply recursive rewrite loop",
+    "category_code": "TMO_05",
+    "category_name": "TIMEOUT_EXCEEDED",
+    "split": "holdout",
+    "code_snippet": "theorem loop_rw (n : Nat) : n = n := by repeat rw [Nat.add_zero]",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 45,
+      "message": "(deterministic) timeout at tactic repeat rw"
+    },
+    "suggested_strategy": "system_control",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-034",
+    "title": "Heartbeats exceeded during simp",
+    "category_code": "TMO_05",
+    "category_name": "TIMEOUT_EXCEEDED",
+    "split": "train",
+    "code_snippet": "theorem big_simp : True := by simp [Nat.add_assoc, Nat.add_comm] -- looping rules",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 31,
+      "message": "maximum heartbeats exceeded (200000)"
+    },
+    "suggested_strategy": "system_control",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-035",
+    "title": "Heavy decision procedure on large bounds",
+    "category_code": "TMO_05",
+    "category_name": "TIMEOUT_EXCEEDED",
+    "split": "train",
+    "code_snippet": "theorem decide_large : 10^8 + 1 > 10^8 := by decide",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 45,
+      "message": "heartbeats limit reached in kernel evaluation"
+    },
+    "suggested_strategy": "system_control",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-036",
+    "title": "Infinite loop in macro expansion",
+    "category_code": "TMO_05",
+    "category_name": "TIMEOUT_EXCEEDED",
+    "split": "holdout",
+    "code_snippet": "macro \"loop_mac\" : term => `(loop_mac)\ndef test := loop_mac",
+    "compiler_log": {
+      "severity": "error",
+      "line": 2,
+      "column": 13,
+      "message": "deep recursion detected in macro expansion"
+    },
+    "suggested_strategy": "system_control",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-037",
+    "title": "Combinatorial explosion in omega tactic",
+    "category_code": "TMO_05",
+    "category_name": "TIMEOUT_EXCEEDED",
+    "split": "train",
+    "code_snippet": "theorem omega_burst (a b c d e f g h : Nat) : True := by omega",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 60,
+      "message": "tactic omega timed out after 10000ms"
+    },
+    "suggested_strategy": "system_control",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-038",
+    "title": "Proving False to prove goal trivially",
+    "category_code": "SEM_06",
+    "category_name": "SEMANTIC_MISMATCH",
+    "split": "train",
+    "code_snippet": "theorem fermat_cheat (n : Nat) (hn : n > 2) : \u2200 x y z : Nat, x^n + y^n = z^n \u2192 x*y*z = 0 := by intro x y z h; have : False := sorry; contradiction",
+    "compiler_log": {
+      "severity": "warning",
+      "line": 1,
+      "column": 110,
+      "message": "warning: theorem uses sorry or dubious assumption"
+    },
+    "suggested_strategy": "semantic_audit",
+    "semantic_risk": "HIGH"
+  },
+  {
+    "error_id": "ERR-039",
+    "title": "Modifying goal to True",
+    "category_code": "SEM_06",
+    "category_name": "SEMANTIC_MISMATCH",
+    "split": "holdout",
+    "code_snippet": "theorem goldbach_mod : True := by trivial",
+    "compiler_log": {
+      "severity": "warning",
+      "line": 1,
+      "column": 24,
+      "message": "statement does not match informal theorem target"
+    },
+    "suggested_strategy": "semantic_audit",
+    "semantic_risk": "HIGH"
+  },
+  {
+    "error_id": "ERR-040",
+    "title": "Inverting quantifier from forall to exists",
+    "category_code": "SEM_06",
+    "category_name": "SEMANTIC_MISMATCH",
+    "split": "train",
+    "code_snippet": "theorem prime_cheat : \u2203 p : Nat, Nat.Prime p := \u27e82, by decide\u27e9",
+    "compiler_log": {
+      "severity": "warning",
+      "line": 1,
+      "column": 1,
+      "message": "statement altered quantifier from \u2200 to \u2203"
+    },
+    "suggested_strategy": "semantic_audit",
+    "semantic_risk": "HIGH"
+  },
+  {
+    "error_id": "ERR-041",
+    "title": "Dropping crucial hypothesis",
+    "category_code": "SEM_06",
+    "category_name": "SEMANTIC_MISMATCH",
+    "split": "train",
+    "code_snippet": "theorem division_by_zero (a b : Real) : a / b * b = a := sorry",
+    "compiler_log": {
+      "severity": "warning",
+      "line": 1,
+      "column": 41,
+      "message": "missing hypothesis h : b \u2260 0 present in original problem"
+    },
+    "suggested_strategy": "semantic_audit",
+    "semantic_risk": "HIGH"
+  },
+  {
+    "error_id": "ERR-042",
+    "title": "Replacing equality with trivial inequality",
+    "category_code": "SEM_06",
+    "category_name": "SEMANTIC_MISMATCH",
+    "split": "holdout",
+    "code_snippet": "theorem eq_to_le (x y : Nat) : x + y \u2265 0 := by omega",
+    "compiler_log": {
+      "severity": "warning",
+      "line": 1,
+      "column": 31,
+      "message": "statement altered target equality to trivial inequality"
+    },
+    "suggested_strategy": "semantic_audit",
+    "semantic_risk": "HIGH"
+  },
+  {
+    "error_id": "ERR-043",
+    "title": "Synthetic typing error 43",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "train",
+    "code_snippet": "def err_43 (x : Nat) : Int := x",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 25,
+      "message": "type mismatch: expected Int, got Nat"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-044",
+    "title": "Synthetic typing error 44",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "train",
+    "code_snippet": "def err_44 (x : Nat) : Int := x",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 25,
+      "message": "type mismatch: expected Int, got Nat"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-045",
+    "title": "Synthetic typing error 45",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "holdout",
+    "code_snippet": "def err_45 (x : Nat) : Int := x",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 25,
+      "message": "type mismatch: expected Int, got Nat"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-046",
+    "title": "Synthetic typing error 46",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "train",
+    "code_snippet": "def err_46 (x : Nat) : Int := x",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 25,
+      "message": "type mismatch: expected Int, got Nat"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-047",
+    "title": "Synthetic typing error 47",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "train",
+    "code_snippet": "def err_47 (x : Nat) : Int := x",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 25,
+      "message": "type mismatch: expected Int, got Nat"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-048",
+    "title": "Synthetic typing error 48",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "holdout",
+    "code_snippet": "def err_48 (x : Nat) : Int := x",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 25,
+      "message": "type mismatch: expected Int, got Nat"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-049",
+    "title": "Synthetic typing error 49",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "train",
+    "code_snippet": "def err_49 (x : Nat) : Int := x",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 25,
+      "message": "type mismatch: expected Int, got Nat"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "LOW"
+  },
+  {
+    "error_id": "ERR-050",
+    "title": "Synthetic typing error 50",
+    "category_code": "TYP_04",
+    "category_name": "TYPE_MISMATCH",
+    "split": "train",
+    "code_snippet": "def err_50 (x : Nat) : Int := x",
+    "compiler_log": {
+      "severity": "error",
+      "line": 1,
+      "column": 25,
+      "message": "type mismatch: expected Int, got Nat"
+    },
+    "suggested_strategy": "llm_repair",
+    "semantic_risk": "LOW"
+  }
+]
