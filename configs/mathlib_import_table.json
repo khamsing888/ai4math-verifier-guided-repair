@@ -1,0 +1,22 @@
+{
+  "Real": "import Mathlib.Data.Real.Basic",
+  "Complex": "import Mathlib.Data.Complex.Basic",
+  "Matrix": "import Mathlib.Data.Matrix.Basic",
+  "TopologicalSpace": "import Mathlib.Topology.Basic",
+  "Finset": "import Mathlib.Data.Finset.Basic",
+  "Subgroup": "import Mathlib.GroupTheory.Subgroup.Basic",
+  "Fact": "import Mathlib.Data.Nat.Prime",
+  "Measure": "import Mathlib.MeasureTheory.Measure.MeasureSpace",
+  "Nat.prime": "import Mathlib.Data.Nat.Prime",
+  "Nat.gcd": "import Mathlib.Data.Nat.GCD.Basic",
+  "Int.gcd": "import Mathlib.Data.Int.GCD",
+  "List.length": "import Mathlib.Data.List.Basic",
+  "Finset.sum": "import Mathlib.Algebra.BigOperators.Basic",
+  "Set.univ": "import Mathlib.Data.Set.Basic",
+  "IsOpen": "import Mathlib.Topology.Basic",
+  "Continuous": "import Mathlib.Topology.ContinuousOn",
+  "Group": "import Mathlib.Algebra.Group.Basic",
+  "Ring": "import Mathlib.Algebra.Ring.Basic",
+  "Field": "import Mathlib.Algebra.Field.Basic",
+  "Polynomial": "import Mathlib.Data.Polynomial.Basic"
+}
