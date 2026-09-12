@@ -1,0 +1,37 @@
+{
+  "run_id": "rule-repair-eval-20260912074829-363437",
+  "timestamp": "2026-09-12T07:48:29.785538+00:00",
+  "git_commit": "feature/rule-repair",
+  "data_version": "v0.1-50-errors",
+  "machine": {
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "cpu": "arm",
+    "python": "3.14.3"
+  },
+  "parameters": {
+    "dataset_path": "data_sample/error_dataset_50.json",
+    "total_candidates": 50,
+    "engine": "RuleRepairEngine",
+    "token_cost_per_repair": 0,
+    "seed": 42
+  },
+  "seed": 42,
+  "timeout": 5,
+  "metrics": {
+    "total_samples": 50,
+    "rule_repaired_count": 24,
+    "rule_hit_rate": 0.48,
+    "category_breakdown": {
+      "SYN_01": 8,
+      "IMP_02": 8,
+      "ID_03": 8
+    },
+    "latency_p50_ms": 0.001,
+    "latency_p95_ms": 0.069,
+    "throughput_qps": 124610.9,
+    "total_tokens_saved": 13200,
+    "avg_tokens_saved_per_sample": 264.0
+  },
+  "status": "SUCCESS",
+  "log_path": "logs/rule-repair-eval-20260912074829-363437.log"
+}
