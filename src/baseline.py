@@ -3,24 +3,54 @@
 import argparse
 import datetime
 import json
+import math
 import os
 import platform
+import random
 import time
 import uuid
-import numpy as np
+
+
+def _percentile(values, percentile):
+    """Compute percentile with linear interpolation, matching NumPy's default semantics."""
+    if not values:
+        raise ValueError("percentile requires non-empty values")
+
+    ordered = sorted(values)
+    if len(ordered) == 1:
+        return float(ordered[0])
+
+    rank = (len(ordered) - 1) * percentile / 100.0
+    lower_index = int(math.floor(rank))
+    upper_index = int(math.ceil(rank))
+    if lower_index == upper_index:
+        return float(ordered[lower_index])
+
+    lower_value = ordered[lower_index]
+    upper_value = ordered[upper_index]
+    weight = rank - lower_index
+    return float(lower_value + (upper_value - lower_value) * weight)
+
+
+def _generate_exponential_samples(scale=5.0, size=100, seed=42):
+    """Generate exponential samples without requiring NumPy."""
+    rng = random.Random(seed)
+    samples = []
+    for _ in range(size):
+        u = rng.random()
+        samples.append(-scale * math.log(1.0 - u) + 1.0)
+    return samples
 
 
 def run_baseline(config_path: str) -> dict:
     """Executes baseline workflow and calculates latency distributions."""
     start_time = time.time()
 
-    # Simulate query runs for baseline latency calculation
-    np.random.seed(42)
-    synthetic_latencies = np.random.exponential(scale=5.0, size=100) + 1.0  # ms
+    synthetic_latencies = _generate_exponential_samples(scale=5.0, size=100, seed=42)
 
-    p50_latency = float(np.percentile(synthetic_latencies, 50))
-    p95_latency = float(np.percentile(synthetic_latencies, 95))
-    throughput = float(1000.0 / np.mean(synthetic_latencies))
+    p50_latency = _percentile(synthetic_latencies, 50)
+    p95_latency = _percentile(synthetic_latencies, 95)
+    throughput = 1000.0 / (sum(synthetic_latencies) / len(synthetic_latencies))
 
     run_id = f"baseline-{datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d%H%M%S')}-{uuid.uuid4().hex[:6]}"
 
