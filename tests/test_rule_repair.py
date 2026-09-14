@@ -1,12 +1,11 @@
 """Unit tests for Rule-based Repair Engine (src/rule_repair.py).
 
-Author: Lâm Thành Trung (B25CHHT117) - TV3 Lead
+Author: Lâm Thành Trung (B25CHHT117) - TV3
 Project: Group 6 - Verifier-Guided Repair (INT4418 Big Data, PTIT)
 """
 
 import unittest
 from pathlib import Path
-
 from src.rule_repair import (
     RuleRepairEngine,
     apply_rules,
@@ -164,3 +163,4 @@ class TestRuleRepairEngine(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
