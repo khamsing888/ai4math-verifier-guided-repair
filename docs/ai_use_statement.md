@@ -7,35 +7,36 @@
 
 ## 1. Bảng số liệu định lượng tổng hợp (Quantitative Summary)
 
-* **Tổng số phiên/hạng mục AI hỗ trợ:** `18`
-* **Ước tính số dòng mã & tài liệu AI đồng hành:** `~2175` dòng
+* **Tổng số phiên/hạng mục AI hỗ trợ:** `19`
+* **Ước tính số dòng mã & tài liệu AI đồng hành:** `~2215` dòng
 * **Cơ chế kiểm chứng bắt buộc:** 100% mã nguồn được xác minh qua unit test tự động và trình kiểm chứng Lean 4; không chấp nhận mã chưa kiểm chứng.
 
 ### Phân bổ theo loại tác vụ:
 | Loại tác vụ | Số lần ghi nhận | Tỷ trọng (%) |
 |:---|:---:|:---:|
-| Docs | 2 | 11.1% |
-| Workspace Setup | 1 | 5.6% |
-| Governance & Harness | 1 | 5.6% |
-| Academic Proposal | 1 | 5.6% |
-| Taxonomy Design | 1 | 5.6% |
-| Dataset Curation | 1 | 5.6% |
-| Code Generation | 1 | 5.6% |
-| Baseline Implementation | 1 | 5.6% |
-| Testing & QA | 1 | 5.6% |
-| Team Roster & Governance | 1 | 5.6% |
-| Team Role Adjustment | 1 | 5.6% |
-| Environment & Tooling | 1 | 5.6% |
-| Lean 4 Interactive Verification | 1 | 5.6% |
-| Data Contract & Replayable Store | 1 | 5.6% |
-| System Architecture Documentation | 1 | 5.6% |
-| Architecture Refinement | 1 | 5.6% |
-| Code | 1 | 5.6% |
+| Docs | 2 | 10.5% |
+| Code | 2 | 10.5% |
+| Workspace Setup | 1 | 5.3% |
+| Governance & Harness | 1 | 5.3% |
+| Academic Proposal | 1 | 5.3% |
+| Taxonomy Design | 1 | 5.3% |
+| Dataset Curation | 1 | 5.3% |
+| Code Generation | 1 | 5.3% |
+| Baseline Implementation | 1 | 5.3% |
+| Testing & QA | 1 | 5.3% |
+| Team Roster & Governance | 1 | 5.3% |
+| Team Role Adjustment | 1 | 5.3% |
+| Environment & Tooling | 1 | 5.3% |
+| Lean 4 Interactive Verification | 1 | 5.3% |
+| Data Contract & Replayable Store | 1 | 5.3% |
+| System Architecture Documentation | 1 | 5.3% |
+| Architecture Refinement | 1 | 5.3% |
 
 ### Phân bổ theo mô hình / công cụ AI:
 | Mô hình / Công cụ | Số lần ghi nhận | Tỷ trọng (%) |
 |:---|:---:|:---:|
-| Claude Code / Antigravity | 18 | 100.0% |
+| Claude Code / Antigravity | 18 | 94.7% |
+| GitHub Copilot (MAI-Code-1.1-Flash) | 1 | 5.3% |
 
 ---
 
@@ -61,6 +62,7 @@
 | 2026-09-11 09:05 | Week 2 | Claude Code / Antigravity | Docs | Structured detailed member task matrix by individual name and deliverables | Human audit against INT4418 guidelines | Đào Văn Tâm | ✅ VERIFIED |
 | 2026-09-11 09:19 | Week 2 | Claude Code / Antigravity | Docs | Integrated onboarding quickstart and Git Flow team workflow into README.md | Markdown inspection and git status | Đào Văn Tâm | ✅ VERIFIED |
 | 2026-09-11 12:46 | Week 2 | Claude Code / Antigravity | Code | Thực thi và kiểm thử baseline repair trên error dataset mẫu | Kiểm thử thành công qua baseline script | Mekdala Nounou | ✅ VERIFIED |
+| 2026-09-14 13:44 | Week 1 | GitHub Copilot (MAI-Code-1.1-Flash) | Code | Fix baseline runtime dependency failure and validate repo tests | python -m unittest discover -s tests -v | Khamsing OUTHAIHUENG | ✅ VERIFIED |
 
 ---
 
