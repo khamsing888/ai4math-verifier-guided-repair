@@ -1,6 +1,6 @@
-"""Replayable Error Store for Group 6 (Verifier-Guided Repair).
+"""Replayable Error Store for Verifier-Guided Repair.
 
-Implements Tuần 2 deliverable:
+Features:
 - Ingestion conforming to Data Contract v0.1
 - Error persistence & indexing
 - Deterministic replay execution mechanism

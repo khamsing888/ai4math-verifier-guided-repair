@@ -1,11 +1,4 @@
-"""Benchmark and Rule Coverage Experiment Runner for Rule-based Repair.
-
-Module: scripts/run_rule_experiment.py
-Author: Lâm Thành Trung (B25CHHT117) - Rule-based Repair Lead (TV3)
-Project: Group 6 - Verifier-Guided Repair (INT4418 Big Data, PTIT)
-
-Generates immutable Appendix B JSON benchmark record for Rule-based fast-path.
-"""
+"""Benchmark and Rule Coverage Experiment Runner for Rule-based Repair."""
 
 import argparse
 import datetime
@@ -112,7 +105,7 @@ def run_rule_benchmark(dataset_path: str, seed: int = 42) -> dict:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Run Group 6 Rule Repair Benchmark")
+    parser = argparse.ArgumentParser(description="Run Rule Repair Benchmark")
     parser.add_argument("--data", default="data_sample/error_dataset_50.json", help="Path to error dataset")
     parser.add_argument("--seed", type=int, default=42, help="Random seed")
     args = parser.parse_args()

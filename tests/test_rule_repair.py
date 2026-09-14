@@ -1,8 +1,4 @@
-"""Unit tests for Rule-based Repair Engine (src/rule_repair.py).
-
-Author: Lâm Thành Trung (B25CHHT117) - TV3
-Project: Group 6 - Verifier-Guided Repair (INT4418 Big Data, PTIT)
-"""
+"""Unit tests for Rule-based Repair Engine."""
 
 import unittest
 from pathlib import Path

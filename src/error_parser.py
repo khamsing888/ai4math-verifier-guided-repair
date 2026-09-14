@@ -1,8 +1,4 @@
-"""Structured Lean 4 Compiler Error Parser & Taxonomy Classifier.
-
-Module: src.error_parser
-Author: AI4Math Group 6 (Verifier-Guided Repair)
-"""
+"""Structured Lean 4 Compiler Error Parser & Taxonomy Classifier."""
 
 from dataclasses import dataclass
 from enum import Enum

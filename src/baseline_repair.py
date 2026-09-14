@@ -1,9 +1,4 @@
-"""Baseline Repair Runner for Group 6 (Blind One-Shot Retry).
-
-Baseline Specification (PTIT INT4418 Section 7, Group 6):
-"Retry nguyên prompt đúng một lần, không phân loại lỗi và không đưa
-thông báo Lean có cấu trúc vào chiến lược sửa."
-"""
+"""Baseline repair module for theorem proving."""
 
 import argparse
 import datetime
@@ -101,7 +96,7 @@ def run_blind_retry_baseline(dataset_path: str, seed: int = 42) -> dict:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Run Group 6 Blind Retry Baseline")
+    parser = argparse.ArgumentParser(description="Run Baseline Theorem Repair")
     parser.add_argument("--data", default="data_sample/error_dataset_50.json", help="Path to error dataset")
     parser.add_argument("--seed", type=int, default=42, help="Random seed")
     args = parser.parse_args()

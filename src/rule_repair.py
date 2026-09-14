@@ -1,10 +1,6 @@
 """Rule-based Repair Engine for Lean 4 formal mathematical theorems.
 
-Module: src.rule_repair
-Lead Author: Lâm Thành Trung (B25CHHT117) - Rule-based Repair Lead (TV3)
-Project: Group 6 - Verifier-Guided Repair (INT4418 Big Data, PTIT)
-
-Provides zero-token cost, sub-5ms heuristic fixes for:
+Provides heuristic fixes for:
 - SYN_01: Bracket balancing and keyword insertion
 - IMP_02: Mathlib import injection using lookup table
 - ID_03: Common identifier alias & typo resolution
